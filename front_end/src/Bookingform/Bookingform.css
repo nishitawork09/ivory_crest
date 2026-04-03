@@ -1,0 +1,148 @@
+/* ===== Full Background ===== */
+.booking-container {
+  min-height: 100vh;
+  /* Solid ivory background */
+  background-color: #faf9f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+/* ===== Reservation Card ===== */
+.booking-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 0px; /* Fully sharp architectural edges */
+  padding: 50px;
+  /* Minimalist light grey border */
+  border: 1px solid #e8e6e1;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.04);
+  animation: fadeIn 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* ===== Selected Room Section ===== */
+.room-info {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+  align-items: flex-start;
+  border-bottom: 1px solid #f0eee9;
+  padding-bottom: 40px;
+}
+
+.room-info img {
+  width: 350px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0px;
+  border: 1px solid #e8e6e1;
+}
+
+.room-details h2 {
+  font-family: "Cinzel", serif;
+  font-size: 26px;
+  letter-spacing: 3px;
+  color: #1a1a1a; /* Deep charcoal instead of gold */
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.room-details p {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ===== Booking Form ===== */
+.booking-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.booking-form label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1a1a1a; /* Clean black/charcoal labels */
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Standard and Date Inputs */
+.booking-form input {
+  padding: 15px;
+  border-radius: 0px;
+  border: 1px solid #e8e6e1;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.booking-form input:focus {
+  border-color: #1a1a1a; /* Sharp black focus border */
+  background-color: #ffffff;
+}
+
+/* Special Styling for Date Pickers */
+.booking-form input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: grayscale(1); /* Removes any default color */
+  opacity: 0.6;
+}
+
+.booking-form .full-width {
+  grid-column: span 2;
+}
+
+/* ===== Reserve Button ===== */
+.booking-form button {
+  grid-column: span 2;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #1a1a1a;
+  background: #1a1a1a; /* High contrast black button */
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.booking-form button:hover {
+  background-color: #ffffff;
+  color: #1a1a1a; /* Inverts on hover */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .booking-card {
+    padding: 30px;
+  }
+  .room-info {
+    flex-direction: column;
+  }
+  .room-info img {
+    width: 100%;
+  }
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+  .booking-form button,
+  .booking-form .full-width {
+    grid-column: span 1;
+  }
+}

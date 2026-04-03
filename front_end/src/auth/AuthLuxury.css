@@ -1,0 +1,200 @@
+/* ===== Full Background ===== */
+.luxury-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Updated to Clean Ivory */
+  background-color: #faf9f6;
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+/* Luxury Texture Overlay (Subtle adjustment for light theme) */
+.luxury-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png"); /* Optional texture */
+  pointer-events: none;
+}
+
+/* ===== Luxury Light Card ===== */
+.luxury-card {
+  background: #ffffff; /* Pure white card */
+  padding: 60px 45px;
+  width: 420px;
+  border-radius: 24px; /* Matches the rounded payment card */
+  border: 1px solid #e8e6e1;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.04);
+  text-align: center;
+  animation: fadeIn 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 1;
+}
+
+/* ===== Brand Name ===== */
+.brand {
+  font-family: "Cinzel", serif;
+  font-size: 30px;
+  color: #1a1a1a; /* Charcoal */
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ===== Subtitle ===== */
+.luxury-card h2 {
+  color: #666; /* Subtle grey subtitle */
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+/* ===== Inputs (Pill Shape) ===== */
+.luxury-card input {
+  width: 100%;
+  padding: 16px 25px;
+  margin: 12px 0;
+  border-radius: 50px; /* Pill shape */
+  border: 1px solid #e8e6e1;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.4s ease;
+  box-sizing: border-box;
+}
+
+.luxury-card input:focus {
+  border-color: #1a1a1a;
+  background-color: #faf9f6;
+}
+
+.luxury-card input::placeholder {
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+/* ===== Button (Pill + Inverted Hover) ===== */
+.luxury-card button {
+  width: 100%;
+  padding: 18px;
+  margin-top: 25px;
+  border-radius: 50px; /* Pill shape */
+  border: 1px solid #1a1a1a;
+  background-color: #1a1a1a; /* Solid charcoal */
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.luxury-card button:hover {
+  background-color: #ffffff; /* Inverts on hover */
+  color: #1a1a1a;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ===== Switch Text ===== */
+.switch {
+  margin-top: 30px;
+  color: #888;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.switch span {
+  color: #1a1a1a; /* Charcoal link */
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: 0.3s;
+  border-bottom: 1px solid transparent;
+}
+
+.switch span:hover {
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.back {
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back:hover {
+  color: #1a1a1a;
+}
+
+/* ===== Toast Notification (Matching Payment Style) ===== */
+.toast {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 16px 30px;
+  border-radius: 50px; /* Pill shape toasts */
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  z-index: 999;
+}
+
+.toast-success {
+  background-color: #1b3a2a; /* Dark Forest Green */
+  border: 1px solid #2ecc71;
+}
+
+.toast-error {
+  background-color: #3d1a1a; /* Deep Maroon */
+  border: 1px solid #e63946;
+}
+
+/* Animations and Responsive remain consistent */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .luxury-card {
+    width: 90%;
+    padding: 40px 25px;
+  }
+  .brand {
+    font-size: 24px;
+  }
+}

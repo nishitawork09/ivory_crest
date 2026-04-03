@@ -1,0 +1,111 @@
+/* ===== Full Page Background ===== */
+.bookingsContainer {
+  padding: 80px 5%;
+  min-height: 100vh;
+  /* Applying your beautiful new gradient */
+  background: linear-gradient(
+    to bottom,
+    #93a5af 0%,
+    #69818d 30%,
+    #2d4a53 60%,
+    #0d1f23 100%
+  );
+  background-attachment: fixed;
+}
+
+/* ===== Title Styling ===== */
+.bookingsTitle {
+  font-family: "Cinzel", serif;
+  font-size: clamp(28px, 4vw, 36px);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Responsive Grid ===== */
+.bookingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== Slate Booking Card ===== */
+.bookingCard {
+  background: #0d1f23; /* Deepest Midnight from your palette */
+  border-radius: 4px; /* Sharp, modern luxury edges */
+  padding: 30px;
+  border: 1px solid rgba(175, 179, 183, 0.1); /* Faint Frost border */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative glass effect on top of card */
+.bookingCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #69818d, #afb3b7);
+  opacity: 0.6;
+}
+
+.bookingCard:hover {
+  transform: translateY(-10px);
+  border-color: rgba(175, 179, 183, 0.4);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== Card Rows ===== */
+.bookingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding-bottom: 8px;
+}
+
+.bookingRow:last-child {
+  border-bottom: none;
+}
+
+/* ===== Label & Value Styling ===== */
+.bookingLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #69818d; /* Steel Blue from your palette */
+  font-weight: 500;
+}
+
+.bookingValue {
+  color: #afb3b7; /* Frost Grey from your palette */
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* Highlight for specific values (like Room Name) */
+.bookingRow:first-child .bookingValue {
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .bookingsContainer {
+    padding: 40px 20px;
+  }
+  .bookingCard {
+    padding: 20px;
+  }
+}

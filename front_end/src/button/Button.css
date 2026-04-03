@@ -1,0 +1,32 @@
+.luxury-btn {
+  padding: 14px 32px;
+  /* Charcoal Solid Background */
+  background: #1a1a1a;
+  color: #ffffff;
+  /* Pill Shape */
+  border: 1px solid #1a1a1a;
+  border-radius: 50px;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+
+  /* Smooth transition for the inversion effect */
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.luxury-btn:hover {
+  /* Inversion: Becomes White with Charcoal Text/Border */
+  background: #ffffff;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Optional: Active state for a tactile feel */
+.luxury-btn:active {
+  transform: translateY(0);
+  background: #faf9f6;
+}

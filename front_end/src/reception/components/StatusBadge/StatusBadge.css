@@ -1,0 +1,34 @@
+/* StatusBadge.css */
+.status {
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Muted versions of the status colors */
+.Booked {
+  background: rgba(52, 152, 219, 0.15); /* Steel Blue tone */
+  color: #3498db;
+  border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+.Checked-In {
+  background: rgba(39, 174, 96, 0.15); /* Emerald tone */
+  color: #2ecc71;
+  border: 1px solid rgba(39, 174, 96, 0.3);
+}
+
+.Checked-Out {
+  background: rgba(175, 179, 183, 0.1); /* Frost tone */
+  color: #afb3b7;
+  border: 1px solid rgba(175, 179, 183, 0.2);
+}
+
+.Cancelled {
+  background: rgba(192, 57, 43, 0.15); /* Crimson tone */
+  color: #e74c3c;
+  border: 1px solid rgba(192, 57, 43, 0.3);
+}

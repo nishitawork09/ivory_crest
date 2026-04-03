@@ -1,0 +1,44 @@
+/* Base Logout Button Styling */
+.logout-btn.default,
+.logout-btn.other {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  padding: 10px 22px;
+  background: transparent;
+  /* Matching your new Charcoal palette */
+  color: #1a1a1a;
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  /* Matching the Pill Shape of your other inputs/buttons */
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 100;
+}
+
+/* Hover State - Aesthetic "Danger" feedback */
+.logout-btn.default:hover,
+.logout-btn.other:hover {
+  /* Soft Maroon/Deep Red for a luxury logout feel */
+  background: #3d1a1a;
+  color: #ffffff;
+  border-color: #3d1a1a;
+  box-shadow: 0 5px 15px rgba(61, 26, 26, 0.1);
+  transform: translateY(-2px);
+}
+
+.logout-btn.default:active,
+.logout-btn.other:active {
+  transform: translateY(0);
+}
+
+/* Maintaining your icon spacing if applicable */
+.logout-btn.default::before,
+.logout-btn.other::before {
+  margin-right: 8px;
+  font-size: 14px;
+}

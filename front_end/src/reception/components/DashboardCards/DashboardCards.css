@@ -1,0 +1,30 @@
+/* DashboardCards.css */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.card {
+  background: rgba(13, 31, 35, 0.8); /* Midnight Deep */
+  padding: 30px;
+  border-radius: 4px;
+  border: 1px solid rgba(175, 179, 183, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.card h3 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #69818d; /* Steel Blue */
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 32px;
+  font-weight: 300;
+  color: #afb3b7; /* Frost Grey */
+}

@@ -1,0 +1,16 @@
+.actionBtn {
+  background: #d4af37;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  background: #e74c3c;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  cursor: pointer;
+}

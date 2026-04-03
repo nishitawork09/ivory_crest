@@ -1,0 +1,113 @@
+/* ===== Full Page Background ===== */
+.usersContainer {
+  padding: 80px 5%;
+  min-height: 100vh;
+  /* Applying your twilight slate gradient */
+  background: linear-gradient(
+    to bottom,
+    #93a5af 0%,
+    #69818d 30%,
+    #2d4a53 60%,
+    #0d1f23 100%
+  );
+  background-attachment: fixed;
+}
+
+/* ===== Title Styling ===== */
+.usersTitle {
+  font-family: "Cinzel", serif;
+  font-size: clamp(28px, 4vw, 36px);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* ===== Responsive Grid ===== */
+.usersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== Slate User Card ===== */
+.userCard {
+  background: #0d1f23; /* Deepest Midnight from your palette */
+  border-radius: 4px; /* Sharp modern edges */
+  padding: 30px;
+  border: 1px solid rgba(175, 179, 183, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(175, 179, 183, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* User Info Styling */
+.userInfo {
+  margin-bottom: 25px;
+}
+
+/* Label for the Email (Small & Steel Blue) */
+.userInfo::before {
+  content: "REGISTERED USER";
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #69818d; /* Steel Blue from your palette */
+  margin-bottom: 8px;
+}
+
+.userEmail {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #afb3b7; /* Frost Grey */
+  word-break: break-all;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Actions Area */
+.userActions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 15px;
+}
+
+/* Delete Button - Muted Crimson Ghost Style */
+.deleteUserBtn {
+  background-color: transparent;
+  color: #ff8a8a;
+  border: 1px solid rgba(192, 57, 43, 0.3);
+  padding: 8px 20px;
+  border-radius: 2px; /* Matching the sharp theme */
+  cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+.deleteUserBtn:hover {
+  background-color: #c0392b;
+  color: white;
+  border-color: #c0392b;
+  box-shadow: 0 5px 15px rgba(192, 57, 43, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .usersContainer {
+    padding: 40px 20px;
+  }
+}

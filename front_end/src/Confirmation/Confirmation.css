@@ -1,0 +1,153 @@
+/* ===== Full Background ===== */
+.confirm-container {
+  min-height: 100vh;
+  background-color: #faf9f6; /* Ivory White */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  font-family: "Inter", sans-serif;
+}
+
+/* Subtle texture overlay for depth */
+.confirm-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  pointer-events: none;
+}
+
+/* ===== Confirmation Card ===== */
+.confirm-card {
+  width: 100%;
+  max-width: 450px;
+  background: #ffffff; /* Pure White Card */
+  border-radius: 24px; /* Soft Pill Edges */
+  padding: 50px 40px;
+  border: 1px solid #e8e6e1;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.04);
+  text-align: center;
+  animation: fadeIn 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 1;
+}
+
+/* Success Title */
+.confirm-card h1 {
+  font-family: "Cinzel", serif;
+  color: #1b3a2a; /* Deep Forest Green for Success */
+  margin-bottom: 10px;
+  font-size: 24px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* Room Name */
+.confirm-card h2 {
+  font-family: "Cinzel", serif;
+  margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #1a1a1a; /* Charcoal */
+}
+
+/* Details Text */
+.confirm-card p {
+  margin: 12px 0;
+  font-size: 13px;
+  color: #666; /* Muted Grey */
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Final Price Section */
+.confirm-card h3 {
+  margin: 30px 0;
+  padding: 20px 0;
+  font-size: 22px;
+  color: #1a1a1a;
+  border-top: 1px solid #e8e6e1;
+  border-bottom: 1px solid #e8e6e1;
+  font-weight: 600;
+}
+
+/* Button Group */
+.Btns {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Action Buttons (Pill Shapes) */
+.confirm-card button {
+  flex: 1;
+  padding: 16px;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  border-radius: 50px; /* Pill Shape */
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Primary Button (Inverted Theme) */
+.confirm-card button:first-child {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Hover States (Inversion Effect) */
+.confirm-card button:first-child:hover {
+  background: #ffffff;
+  color: #1a1a1a;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.confirm-card button:last-child:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 480px) {
+  .confirm-card {
+    width: 90%;
+    padding: 35px 25px;
+  }
+
+  .Btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .confirm-card h1 {
+    font-size: 20px;
+  }
+}

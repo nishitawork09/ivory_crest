@@ -1,0 +1,68 @@
+/* ===== MAIN CONTAINER ===== */
+.adminContainer {
+  display: flex;
+  height: 100vh; /* Lock height to the viewport */
+  width: 100vw;
+  overflow: hidden; /* Prevent the body from scrolling */
+  background: linear-gradient(
+    to bottom,
+    #93A5AF 0%,
+    #69818D 30%,
+    #2D4A53 60%,
+    #0D1F23 100%
+  );
+  background-attachment: fixed;
+}
+
+/* ===== MAIN CONTENT AREA ===== */
+.adminMain {
+  flex: 1;
+  padding: 60px 50px;
+  height: 100vh;
+  overflow-y: auto; /* Only this section will scroll */
+  scroll-behavior: smooth;
+}
+
+/* ===== HEADER ===== */
+.adminHeader {
+  margin-bottom: 50px;
+  border-bottom: 1px solid rgba(175, 179, 183, 0.1);
+  padding-bottom: 20px;
+}
+
+.adminTitle {
+  font-family: "Cinzel", serif;
+  font-size: 38px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== SECTION AREA (The Content Box) ===== */
+.adminSection {
+  /* Dark Glassmorphism Effect */
+  background: rgba(13, 31, 35, 0.6);
+  padding: 40px;
+  border-radius: 4px; /* Sharp modern luxury edges */
+  backdrop-filter: blur(15px); /* Stronger blur for a premium feel */
+  border: 1px solid rgba(175, 179, 183, 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+
+  /* Ensuring the section expands properly */
+  min-height: 400px;
+}
+
+/* Scrollbar Styling for a truly custom feel */
+.adminMain::-webkit-scrollbar {
+  width: 6px;
+}
+
+.adminMain::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.adminMain::-webkit-scrollbar-thumb {
+  background: #69818d;
+  border-radius: 10px;
+}

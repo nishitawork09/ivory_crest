@@ -1,0 +1,84 @@
+/* CTA Section Wrapper - Switched to Ivory */
+.cta {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #faf9f6; /* Ivory White */
+  position: relative;
+  /* Thick black top border for section definition */
+  border-top: 2px solid #1a1a1a;
+  overflow: hidden;
+}
+
+/* Removed the gold glow ::before pseudo-element as it clashes with the light theme */
+.cta::before {
+  display: none;
+}
+
+/* Heading */
+.cta h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #1a1a1a; /* Dark charcoal */
+  margin-bottom: 20px;
+}
+
+/* Subtext */
+.cta p {
+  color: #666666; /* Sophisticated grey instead of gold */
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+  font-weight: 400;
+}
+
+/* Luxury Button - High Contrast Monochromatic */
+.cta button {
+  background: transparent;
+  color: #1a1a1a;
+  /* High visibility border */
+  border: 2px solid #1a1a1a;
+  padding: 18px 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  /* Updated to 50px for the Pill shape */
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover State - Solid Black Fill */
+.cta button:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.cta button:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .cta {
+    padding: 80px 30px;
+    /* Ensure border remains visible on mobile */
+    border-top-width: 2px;
+  }
+
+  .cta h2 {
+    letter-spacing: 4px;
+  }
+
+  .cta p {
+    letter-spacing: 1.5px;
+    font-size: 14px;
+  }
+}

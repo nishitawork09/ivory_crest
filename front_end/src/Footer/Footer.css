@@ -1,0 +1,114 @@
+/* Main Footer Wrapper - Switched to Ivory */
+.footer {
+  background: #faf9f6; /* Ivory White */
+  color: #1a1a1a;
+  padding: 80px 20px 25px;
+  position: relative;
+  /* Added a clear, visible top border to anchor the bottom of the page */
+  border-top: 2px solid #cccccc;
+}
+
+/* Luxury Separation Ray  */
+.footer::before {
+  content: "";
+  display: block;
+  height: 1px;
+  /* background: rgba(0, 0, 0, 0.1); Subtle internal divider */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Flex Container */
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  gap: 40px;
+}
+
+.footer-section {
+  max-width: 300px;
+  min-width: 250px;
+}
+
+/* Brand Title (IVORY CREST) */
+.footer-section h2 {
+  color: #1a1a1a;
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+/* Column Headers */
+.footer-section h3 {
+  color: #1a1a1a; /* Switched from Gold to Black */
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  /* Visual underline for column headers */
+  border-bottom: 1px solid #cccccc;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Footer Text */
+.footer-section p {
+  margin: 12px 0;
+  font-size: 14px;
+  color: #444444; /* Darker grey for readability on Ivory */
+  line-height: 1.6;
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+/* Icons */
+.footer-section i {
+  color: #1a1a1a; /* Black icons */
+  margin-right: 12px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* Interactive Link Effect */
+.footer-section p:hover {
+  color: #000000;
+  transform: translateX(5px); /* Subtle shift instead of color change */
+  cursor: pointer;
+}
+
+/* Copyright Bar */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #cccccc; /* Matches your line color #ccc */
+  padding-top: 20px; /* Slightly reduced padding */
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* Responsive Handling */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    max-width: 100%;
+  }
+
+  .footer-section h3 {
+    border-bottom: none; /* Cleaner look for mobile center-align */
+  }
+}

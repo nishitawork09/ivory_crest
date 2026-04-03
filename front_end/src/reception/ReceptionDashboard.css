@@ -1,0 +1,25 @@
+/* ReceptionDashboard.css */
+.receptionLayout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Prevent body scroll */
+  background: linear-gradient(to bottom, #93A5AF 0%, #69818D 30%, #2D4A53 60%, #0D1F23 100%);
+  background-attachment: fixed;
+}
+
+.receptionContent {
+  flex: 1;
+  padding: 60px 50px;
+  height: 100vh;
+  overflow-y: auto; /* Independent scrolling */
+  background: transparent; /* Let main gradient show through */
+}
+
+.receptionContent h1 {
+  font-family: 'Cinzel', serif;
+  color: #ffffff;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}

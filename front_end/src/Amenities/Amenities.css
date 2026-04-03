@@ -1,0 +1,114 @@
+/* Main Section - Switched to Ivory */
+.amenities {
+  padding: 120px 20px;
+  background-color: #faf9f6; /* Ivory White */
+  text-align: center;
+  border-top: 2px solid #1a1a1a; /* Visible section divider */
+}
+
+/* Heading */
+.amenities h2 {
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 300;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #1a1a1a; /* Dark text */
+  margin-bottom: 70px;
+  position: relative;
+}
+
+.amenities h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px; /* Slightly thicker */
+  background-color: #1a1a1a; /* Black accent */
+  margin: 20px auto 0;
+}
+
+/* Container for cards */
+.amenities-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Luxury Card Design - Visible Border & Light Background */
+.amenity-card {
+  background: #ffffff; /* Pure white cards against ivory floor */
+  width: 260px;
+  padding: 40px 30px;
+  border-radius: 4px;
+  /* Visible, solid border */
+  border: 2px solid #cccccc;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* Icon Styling */
+.amenity-card i {
+  font-size: 40px;
+  color: #1a1a1a; /* Black icons */
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+  display: inline-block;
+}
+
+/* Hover Effect: The "Inverted Look" */
+.amenity-card:hover {
+  transform: translateY(-10px);
+  background: #1a1a1a; /* Card turns black on hover */
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 25px;
+}
+
+.amenity-card:hover i {
+  color: #faf9f6; /* Icon turns ivory on hover */
+  transform: scale(1.1);
+}
+
+/* Text Styling */
+.amenity-card h3 {
+  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.amenity-card:hover h3 {
+  color: #ffffff; /* Heading turns white on hover */
+}
+
+.amenity-card p {
+  font-size: 14px;
+  color: #555; /* Dark grey for readability */
+  line-height: 1.7;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.amenity-card:hover p {
+  color: #d1d1cf; /* Text dims on hover background */
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .amenities {
+    padding: 80px 20px;
+  }
+
+  .amenity-card {
+    width: 100%;
+    max-width: 350px;
+    padding: 35px 20px;
+    border-width: 1.5px;
+  }
+}
