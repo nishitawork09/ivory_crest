@@ -1,9 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
 const User = require("../models/User");
-
+const verifyToken = require("../middleware/verifyToken");
 const router = express.Router();
 
 /* ================= SIGNUP ================= */
@@ -22,7 +21,7 @@ router.post("/signup", async (req, res) => {
 
     if (!passwordRegex.test(password)) {
       return res.status(400).json({
-        msg: "Password must be 8+ chars, include uppercase, lowercase, number & special character",
+        msg: "Password must be strong",
       });
     }
 
@@ -32,7 +31,7 @@ router.post("/signup", async (req, res) => {
       return res.status(409).json({ msg: "User already exists" });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword = await bcrypt.hash(password, 8);
 
     const newUser = await User.create({
       name,
@@ -61,9 +60,7 @@ router.post("/login", async (req, res) => {
     }
 
     email = email.trim().toLowerCase();
-
     const user = await User.findOne({ email });
-
     if (!user) {
       return res.status(401).json({ msg: "Invalid credentials" });
     }
@@ -94,6 +91,34 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Something went wrong" });
+  }
+});
+
+router.put("/update-profile", verifyToken, async (req, res) => {
+  const { name, email, password } = req.body;
+
+  try {
+    const user = await User.findById(req.user.id); // use req.user.id (from JWT payload)
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch)
+      return res.status(401).json({ message: "Incorrect password" });
+
+    if (email !== user.email) {
+      const exists = await User.findOne({ email });
+      if (exists)
+        return res.status(400).json({ message: "Email already in use" });
+    }
+
+    user.name = name;
+    user.email = email;
+    await user.save();
+
+    res.json({ name: user.name, email: user.email });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
   }
 });
 

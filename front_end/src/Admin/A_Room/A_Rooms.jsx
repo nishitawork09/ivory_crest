@@ -91,6 +91,8 @@ export default function A_Rooms() {
 
               <p className="roomPrice">₹ {room.price}</p>
 
+              <p className="roomNumber">Room No: {room.roomNumber}</p>
+
               <div className="roomButtons">
                 <button
                   className="roomEditBtn"

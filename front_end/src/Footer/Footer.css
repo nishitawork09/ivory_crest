@@ -1,19 +1,19 @@
-/* Main Footer Wrapper - Switched to Ivory */
+/* ===== Google Fonts Import (remove if already in index.css) ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* Main Footer Wrapper */
 .footer {
-  background: #faf9f6; /* Ivory White */
+  background: #faf9f6;
   color: #1a1a1a;
   padding: 80px 20px 25px;
   position: relative;
-  /* Added a clear, visible top border to anchor the bottom of the page */
   border-top: 2px solid #cccccc;
 }
 
-/* Luxury Separation Ray  */
 .footer::before {
   content: "";
   display: block;
   height: 1px;
-  /* background: rgba(0, 0, 0, 0.1); Subtle internal divider */
   position: absolute;
   top: 0;
   left: 0;
@@ -36,7 +36,7 @@
   min-width: 250px;
 }
 
-/* Brand Title (IVORY CREST) */
+/* Brand Title */
 .footer-section h2 {
   color: #1a1a1a;
   font-weight: 300;
@@ -44,35 +44,37 @@
   text-transform: uppercase;
   margin-bottom: 25px;
   font-size: 24px;
+  font-family: "Cormorant Garamond", serif; /* ✅ */
 }
 
 /* Column Headers */
 .footer-section h3 {
-  color: #1a1a1a; /* Switched from Gold to Black */
+  color: #1a1a1a;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 20px;
-  /* Visual underline for column headers */
   border-bottom: 1px solid #cccccc;
   display: inline-block;
   padding-bottom: 5px;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
 /* Footer Text */
 .footer-section p {
   margin: 12px 0;
   font-size: 14px;
-  color: #444444; /* Darker grey for readability on Ivory */
+  color: #444444;
   line-height: 1.6;
   font-weight: 300;
   transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
 /* Icons */
 .footer-section i {
-  color: #1a1a1a; /* Black icons */
+  color: #1a1a1a;
   margin-right: 12px;
   font-size: 16px;
   opacity: 0.9;
@@ -81,22 +83,45 @@
 /* Interactive Link Effect */
 .footer-section p:hover {
   color: #000000;
-  transform: translateX(5px); /* Subtle shift instead of color change */
+  transform: translateX(5px);
   cursor: pointer;
 }
 
 /* Copyright Bar */
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid #cccccc; /* Matches your line color #ccc */
-  padding-top: 20px; /* Slightly reduced padding */
+  border-top: 1px solid #cccccc;
+  padding-top: 20px;
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #888;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
-/* Responsive Handling */
+/* ===== Scroll Reveal ===== */
+.footer-container {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(3px);
+  animation: footerReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+
+.footer-bottom {
+  opacity: 0;
+  animation: footerReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 10% entry 40%;
+}
+
+@keyframes footerReveal {
+  from { opacity: 0; transform: translateY(24px); filter: blur(3px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
@@ -109,6 +134,6 @@
   }
 
   .footer-section h3 {
-    border-bottom: none; /* Cleaner look for mobile center-align */
+    border-bottom: none;
   }
 }

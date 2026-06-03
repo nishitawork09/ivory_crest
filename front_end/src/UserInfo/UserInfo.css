@@ -1,0 +1,365 @@
+/* ===== Google Fonts Import ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* Main container */
+.user-info {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  font-family: "Montserrat", sans-serif; /* ✅ replaced Inter */
+}
+
+/* Heading */
+.user-info h2 {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  font-family: "Cormorant Garamond", serif; /* ✅ */
+}
+
+.user-info h3 {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+/* Logout button */
+.user-info > button {
+  margin-bottom: 25px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: 1px solid #1a1a1a;
+  background: transparent;
+  color: #1a1a1a;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+.user-info > button:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* Booking card */
+.booking-card {
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Text */
+.booking-card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 1);
+  font-family: "Montserrat", sans-serif; 
+  font-weight: 600;
+}
+
+/* Actions */
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: transparent;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+/* Reschedule */
+.actions button:nth-child(1) {
+  border-color: #1a1a1a;
+  color: #1a1a1a;
+}
+
+.actions button:nth-child(1):hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* Cancel */
+.actions button:nth-child(2) {
+  border-color: #999;
+  color: #666;
+}
+
+.actions button:nth-child(2):hover {
+  background: #999;
+  color: #fff;
+}
+
+/* Delete */
+.actions button:nth-child(3) {
+  border-color: #c94b4b;
+  color: #c94b4b;
+}
+
+.actions button:nth-child(3):hover {
+  background: #c94b4b;
+  color: #fff;
+}
+
+/* Disabled */
+button:disabled {
+  background-color: #eee !important;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Status */
+.status {
+  font-weight: 500;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+.status.booked {
+  color: #2e7d32;
+}
+.status.cancelled {
+  color: #c94b4b;
+}
+.status.checked-in {
+  color: #1a1a1a;
+}
+.status.checked-out {
+  color: #888;
+}
+
+/* Reschedule box */
+.reschedule-box {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reschedule-box input {
+  padding: 8px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+.reschedule-box button {
+  border-radius: 999px;
+  padding: 8px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+.reschedule-box button:hover {
+  background: #333;
+}
+
+/* Profile card */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+.profile-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000 !important;
+  font-family: "Cormorant Garamond", serif; /* ✅ */
+}
+
+.profile-email {
+  font-size: 13px;
+  color: #000 !important;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+/* Loading text */
+.user-info p {
+  color: #666;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+/* ===== Back Button ===== */
+.back-btn-fixed {
+  position: sticky;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1100;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  width: fit-content;
+}
+
+.back-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(26, 26, 26, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-btn-fixed:hover .back-circle {
+  transform: translateX(-5px);
+  background: #000;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.back-btn-fixed:active .back-circle {
+  transform: translateX(-2px) scale(0.95);
+}
+
+.back-btn-fixed:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.back-btn-fixed:focus-visible .back-circle {
+  outline: 2px solid #999;
+  outline-offset: 4px;
+}
+
+/* Edit Profile Link */
+.edit-profile-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid #1a1a1a;
+  color: #1a1a1a;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-profile-link:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.edit-profile-link i {
+  font-size: 12px;
+}
+
+/* ===== Entrance Animations ===== */
+.profile-card {
+  animation: silkenSlideDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.user-info h3 {
+  animation: silkenSlideDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.booking-card {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(3px);
+  animation: silkenSlideUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
+}
+
+@keyframes silkenSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes silkenSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .back-btn-fixed {
+    top: 12px;
+    left: 12px;
+  }
+
+  .back-circle {
+    width: 40px;
+    height: 40px;
+  }
+}

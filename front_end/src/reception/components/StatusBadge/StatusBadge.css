@@ -6,29 +6,29 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
-/* Muted versions of the status colors */
 .Booked {
-  background: rgba(52, 152, 219, 0.15); /* Steel Blue tone */
+  background: rgba(52, 152, 219, 0.15);
   color: #3498db;
   border: 1px solid rgba(52, 152, 219, 0.3);
 }
 
 .Checked-In {
-  background: rgba(39, 174, 96, 0.15); /* Emerald tone */
+  background: rgba(39, 174, 96, 0.15);
   color: #2ecc71;
   border: 1px solid rgba(39, 174, 96, 0.3);
 }
 
 .Checked-Out {
-  background: rgba(175, 179, 183, 0.1); /* Frost tone */
+  background: rgba(175, 179, 183, 0.1);
   color: #afb3b7;
   border: 1px solid rgba(175, 179, 183, 0.2);
 }
 
 .Cancelled {
-  background: rgba(192, 57, 43, 0.15); /* Crimson tone */
+  background: rgba(192, 57, 43, 0.15);
   color: #e74c3c;
   border: 1px solid rgba(192, 57, 43, 0.3);
 }

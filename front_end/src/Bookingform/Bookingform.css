@@ -1,12 +1,80 @@
+/* ===== Google Fonts Import (remove if already in index.css) ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
 /* ===== Full Background ===== */
 .booking-container {
   min-height: 100vh;
-  /* Solid ivory background */
   background-color: #faf9f6;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ===== Ambient Orbs ===== */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: orbFloat linear infinite;
+}
+
+.orb1 {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(
+    circle,
+    rgba(200, 190, 170, 0.18) 0%,
+    transparent 70%
+  );
+  top: -80px;
+  left: -80px;
+  animation-duration: 18s;
+}
+
+.orb2 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(
+    circle,
+    rgba(180, 170, 150, 0.14) 0%,
+    transparent 70%
+  );
+  bottom: -60px;
+  right: -60px;
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+.orb3 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle,
+    rgba(210, 200, 185, 0.12) 0%,
+    transparent 70%
+  );
+  top: 50%;
+  left: 60%;
+  animation-duration: 28s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -20px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 30px) rotate(240deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
 }
 
 /* ===== Reservation Card ===== */
@@ -14,12 +82,54 @@
   background: #ffffff;
   width: 100%;
   max-width: 1000px;
-  border-radius: 0px; /* Fully sharp architectural edges */
   padding: 50px;
-  /* Minimalist light grey border */
   border: 1px solid #e8e6e1;
   box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.04);
-  animation: fadeIn 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+  border-radius: 0px;
+  z-index: 1;
+  position: relative;
+  animation: silkenVeilCard 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Idle sheen pulse */
+.booking-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  pointer-events: none;
+  animation: sheenPulse 5s ease-in-out infinite;
+}
+
+@keyframes silkenVeilCard {
+  0% {
+    opacity: 0;
+    transform: translateY(44px) scale(0.95);
+    filter: blur(6px);
+  }
+  55% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sheenPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
 }
 
 /* ===== Selected Room Section ===== */
@@ -30,29 +140,45 @@
   align-items: flex-start;
   border-bottom: 1px solid #f0eee9;
   padding-bottom: 40px;
+  animation: silkenSlideDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 .room-info img {
   width: 350px;
   height: 220px;
   object-fit: cover;
-  border-radius: 0px;
   border: 1px solid #e8e6e1;
 }
 
 .room-details h2 {
-  font-family: "Cinzel", serif;
   font-size: 26px;
   letter-spacing: 3px;
-  color: #1a1a1a; /* Deep charcoal instead of gold */
+  color: #1a1a1a;
   text-transform: uppercase;
   margin-bottom: 15px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
 }
 
 .room-details p {
   color: #777;
   font-size: 14px;
   line-height: 1.8;
+  font-family: "Montserrat";
+  font-weight: 300;
+}
+
+@keyframes silkenSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 /* ===== Booking Form ===== */
@@ -67,37 +193,64 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #1a1a1a; /* Clean black/charcoal labels */
+  color: #1a1a1a;
   margin-bottom: 10px;
   font-weight: 600;
+  font-family: "Montserrat", sans-serif;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  animation: silkenSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Standard and Date Inputs */
+/* Stagger each form group */
+.form-group:nth-of-type(1) {
+  animation-delay: 0.45s;
+}
+.form-group:nth-of-type(2) {
+  animation-delay: 0.52s;
+}
+.form-group:nth-of-type(3) {
+  animation-delay: 0.59s;
+}
+.form-group:nth-of-type(4) {
+  animation-delay: 0.66s;
+}
+.form-group:nth-of-type(5) {
+  animation-delay: 0.73s;
+}
+.form-group:nth-of-type(6) {
+  animation-delay: 0.8s;
+}
+
+/* Inputs */
 .booking-form input {
   padding: 15px;
-  border-radius: 0px;
   border: 1px solid #e8e6e1;
   background-color: #ffffff;
   color: #1a1a1a;
   font-size: 14px;
   outline: none;
-  transition: all 0.3s ease;
+  transition:
+    border-color 0.4s ease,
+    background-color 0.4s ease,
+    box-shadow 0.4s ease;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  border-radius: 0px;
 }
 
 .booking-form input:focus {
-  border-color: #1a1a1a; /* Sharp black focus border */
-  background-color: #ffffff;
+  border-color: #1a1a1a;
+  background-color: #faf9f6;
+  box-shadow: 0 0 0 4px rgba(26, 26, 26, 0.04);
 }
 
-/* Special Styling for Date Pickers */
 .booking-form input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
-  filter: grayscale(1); /* Removes any default color */
+  filter: grayscale(1);
   opacity: 0.6;
 }
 
@@ -105,39 +258,134 @@
   grid-column: span 2;
 }
 
-/* ===== Reserve Button ===== */
+@keyframes silkenSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ===== Confirm Booking Button ===== */
 .booking-form button {
   grid-column: span 2;
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #1a1a1a;
-  background: #1a1a1a; /* High contrast black button */
+  margin-top: 25px;
+  padding: 18px;
+  background: #222222;
   color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 4px;
+  border: 1px solid #222222;
+  border-radius: 6px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: silkenSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+/* Ripple on hover */
+.booking-form button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.55s ease,
+    height 0.55s ease;
+}
+
+.booking-form button:hover::before {
+  width: 600px;
+  height: 600px;
 }
 
 .booking-form button:hover {
-  background-color: #ffffff;
-  color: #1a1a1a; /* Inverts on hover */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #d6d6d6;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
-/* Responsive adjustments */
+.booking-form button:active {
+  transform: translateY(0) scale(0.97);
+  background: #f5f5f5;
+}
+
+.booking-form button:focus-visible {
+  outline: 2px solid #999;
+  outline-offset: 3px;
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 16px 30px;
+  border-radius: 50px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  font-family: "Montserrat", sans-serif;
+  animation: toastSlideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.toast-error {
+  background: #3d1a1a;
+  border: 1px solid #e63946;
+}
+.toast-warning {
+  background: #3a2e1a;
+  border: 1px solid #f0a500;
+  color: #fff;
+}
+.toast-success {
+  background: #1b3a2a;
+  border: 1px solid #2ecc71;
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .booking-card {
     padding: 30px;
   }
+
   .room-info {
     flex-direction: column;
   }
   .room-info img {
     width: 100%;
   }
+
   .booking-form {
     grid-template-columns: 1fr;
   }

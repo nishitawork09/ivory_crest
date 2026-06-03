@@ -1,68 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
 /* ===== MAIN CONTAINER ===== */
 .adminContainer {
   display: flex;
-  height: 100vh; /* Lock height to the viewport */
+  height: 100vh;
   width: 100vw;
-  overflow: hidden; /* Prevent the body from scrolling */
-  background: linear-gradient(
-    to bottom,
-    #93A5AF 0%,
-    #69818D 30%,
-    #2D4A53 60%,
-    #0D1F23 100%
-  );
-  background-attachment: fixed;
+  overflow: hidden;
+
+  /* soft ivory background - keeps the premium hotel vibe */
+  background: linear-gradient(to bottom, #faf9f6 0%, #f2f1ed 50%, #eceae5 100%);
+
+  /* Setting body font to Montserrat for general UI elements */
+  font-family: "Montserrat", sans-serif;
 }
 
 /* ===== MAIN CONTENT AREA ===== */
 .adminMain {
   flex: 1;
-  padding: 60px 50px;
+  padding: 60px 50px; /* Slightly more breathing room */
+
   height: 100vh;
-  overflow-y: auto; /* Only this section will scroll */
+  overflow-y: auto;
   scroll-behavior: smooth;
 }
 
 /* ===== HEADER ===== */
 .adminHeader {
-  margin-bottom: 50px;
-  border-bottom: 1px solid rgba(175, 179, 183, 0.1);
+  margin-bottom: 40px;
   padding-bottom: 20px;
+  border-bottom: 1px solid #e6e4df;
 }
 
 .adminTitle {
-  font-family: "Cinzel", serif;
-  font-size: 38px;
-  letter-spacing: 8px;
-  text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* 🔥 Updated to Cormorant Garamond for the editorial look */
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px; /* Serifs look better larger */
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: capitalize; /* More elegant than uppercase for this font */
+
+  color: #1a1a1a;
 }
 
-/* ===== SECTION AREA (The Content Box) ===== */
+/* ===== CONTENT SECTION (THE CARD) ===== */
 .adminSection {
-  /* Dark Glassmorphism Effect */
-  background: rgba(13, 31, 35, 0.6);
+  background: #ffffff;
   padding: 40px;
-  border-radius: 4px; /* Sharp modern luxury edges */
-  backdrop-filter: blur(15px); /* Stronger blur for a premium feel */
-  border: 1px solid rgba(175, 179, 183, 0.1);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
 
-  /* Ensuring the section expands properly */
+  /* Tighter radius (12px) for a more tailored, formal appearance */
+  border-radius: 12px;
+  border: 1px solid #e6e4df;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
   min-height: 400px;
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Scrollbar Styling for a truly custom feel */
+/* Subtle gold/dark accent line at the top of sections */
+.adminSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #1a1a1a, #d4af37);
+  opacity: 0.3;
+}
+
+/* subtle hover lift */
+.adminSection:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+  border-color: #d6d6d6;
+}
+
+/* ===== CUSTOM SCROLLBAR (Minimalist) ===== */
 .adminMain::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 .adminMain::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+  background: transparent; /* Cleaner look */
 }
 
 .adminMain::-webkit-scrollbar-thumb {
-  background: #69818d;
+  background: #d6d4d0;
   border-radius: 10px;
+}
+
+.adminMain::-webkit-scrollbar-thumb:hover {
+  background: #1a1a1a; /* Darkens to match theme on interaction */
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .adminMain {
+    padding: 30px 20px;
+  }
+
+  .adminTitle {
+    font-size: 32px;
+  }
+
+  .adminSection {
+    padding: 25px;
+  }
 }

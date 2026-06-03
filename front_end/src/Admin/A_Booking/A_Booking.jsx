@@ -43,6 +43,13 @@ export default function A_Bookings() {
             </div>
 
             <div className="bookingRow">
+              <span className="bookingLabel">Room No</span>
+              <span className="bookingValue">
+                {b.roomId?.roomNumber || "—"}
+              </span>
+            </div>
+
+            <div className="bookingRow">
               <span className="bookingLabel">Check In</span>
               <span className="bookingValue">
                 {new Date(b.checkin).toLocaleDateString()}

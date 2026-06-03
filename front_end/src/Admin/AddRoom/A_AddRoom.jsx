@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function A_AddRoom({ setSection }) {
+  const [roomNumber, setRoomNumber] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [capacity, setCapacity] = useState("");
@@ -15,8 +16,8 @@ export default function A_AddRoom({ setSection }) {
   const token = localStorage.getItem("token");
 
   const addRoom = async () => {
-    // Validation
-    if (!title || !price || !capacity || !img || !desc) {
+    // roomNumber added to validation
+    if (!roomNumber || !title || !price || !capacity || !img || !desc) {
       toast.warning("Please fill all fields");
       return;
     }
@@ -24,23 +25,23 @@ export default function A_AddRoom({ setSection }) {
     const confirmAdd = window.confirm(
       "Are you sure you want to add this room?",
     );
-
     if (!confirmAdd) return;
 
     try {
       await axios.post(
         "http://localhost:5000/api/admin/rooms",
-        { title, price, capacity, img, desc },
+        { roomNumber, title, price, capacity, img, desc }, // roomNumber added
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
       toast.success("Room added successfully");
-
-      setTimeout(() => {
-        setSection("rooms");
-      }, 1500);
+      setTimeout(() => setSection("rooms"), 1500);
     } catch (err) {
-      toast.error("Failed to add room");
+      if (err.response?.status === 409) {
+        toast.error("Room number already exists");
+      } else {
+        toast.error("Failed to add room");
+      }
     }
   };
 
@@ -67,6 +68,12 @@ export default function A_AddRoom({ setSection }) {
           className="addRoomInput"
           placeholder="Capacity"
           onChange={(e) => setCapacity(e.target.value)}
+        />
+
+        <input
+          className="addRoomInput"
+          placeholder="Room Number (e.g. 101)"
+          onChange={(e) => setRoomNumber(e.target.value)}
         />
 
         <input

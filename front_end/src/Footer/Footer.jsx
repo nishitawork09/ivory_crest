@@ -18,7 +18,16 @@ export default function Footer() {
             <i className="fa-solid fa-phone"></i> +91 9876543210
           </p>
           <p>
-            <i className="fa-solid fa-envelope"></i> ivorycrest@gmail.com
+            <i className="fa-solid fa-envelope"></i>{" "}
+            <a
+              style={{
+                color: "#444444",
+                textDecorationLine: "none",
+              }}
+              href="https://mail.google.com/mail/u/3/#inbox?compose=new"
+            >
+              ivorycrest@gmail.com
+            </a>
           </p>
         </div>
       </div>

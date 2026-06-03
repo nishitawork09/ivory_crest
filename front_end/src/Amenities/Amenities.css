@@ -1,32 +1,36 @@
-/* Main Section - Switched to Ivory */
+/* ===== Google Fonts Import ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* ===== Section ===== */
 .amenities {
   padding: 120px 20px;
-  background-color: #faf9f6; /* Ivory White */
+  background-color: #faf9f6;
   text-align: center;
-  border-top: 2px solid #1a1a1a; /* Visible section divider */
+  border-top: 2px solid #1a1a1a;
 }
 
-/* Heading */
+/* ===== Heading ===== */
 .amenities h2 {
   font-size: clamp(28px, 4vw, 38px);
   font-weight: 300;
   letter-spacing: 8px;
   text-transform: uppercase;
-  color: #1a1a1a; /* Dark text */
+  color: #1a1a1a;
   margin-bottom: 70px;
   position: relative;
+  font-family: "Cormorant Garamond", serif; /* ✅ */
 }
 
 .amenities h2::after {
   content: "";
   display: block;
   width: 50px;
-  height: 2px; /* Slightly thicker */
-  background-color: #1a1a1a; /* Black accent */
+  height: 2px;
+  background-color: #1a1a1a;
   margin: 20px auto 0;
 }
 
-/* Container for cards */
+/* ===== Container ===== */
 .amenities-container {
   display: flex;
   flex-wrap: wrap;
@@ -36,70 +40,130 @@
   margin: 0 auto;
 }
 
-/* Luxury Card Design - Visible Border & Light Background */
+/* ===== Card ===== */
 .amenity-card {
-  background: #ffffff; /* Pure white cards against ivory floor */
+  background: #ffffff;
   width: 260px;
   padding: 40px 30px;
-  border-radius: 4px;
-  /* Visible, solid border */
-  border: 2px solid #cccccc;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 16px;
+  border: 1px solid #e6e4df;
   position: relative;
   overflow: hidden;
-  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Icon Styling */
-.amenity-card i {
-  font-size: 40px;
-  color: #1a1a1a; /* Black icons */
-  margin-bottom: 20px;
-  transition: all 0.5s ease;
-  display: inline-block;
+.amenity-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-/* Hover Effect: The "Inverted Look" */
+/* ===== Hover ===== */
 .amenity-card:hover {
-  transform: translateY(-10px);
-  background: #1a1a1a; /* Card turns black on hover */
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
-  border-radius: 25px;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #d6d6d6;
+}
+
+.amenity-card:hover::after {
+  opacity: 0.03;
+}
+
+/* ===== Icon ===== */
+.amenity-card i {
+  font-size: 38px;
+  color: #222222;
+  margin-bottom: 20px;
+  display: inline-block;
+  transition: all 0.4s ease;
 }
 
 .amenity-card:hover i {
-  color: #faf9f6; /* Icon turns ivory on hover */
   transform: scale(1.1);
+  color: #111111;
 }
 
-/* Text Styling */
+/* ===== Title ===== */
 .amenity-card h3 {
   color: #1a1a1a;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   transition: color 0.3s ease;
+  font-family: "Cormorant Garamond", serif; /* ✅ */
 }
 
-.amenity-card:hover h3 {
-  color: #ffffff; /* Heading turns white on hover */
-}
-
+/* ===== Description ===== */
 .amenity-card p {
   font-size: 14px;
-  color: #555; /* Dark grey for readability */
-  line-height: 1.7;
+  color: #666666;
+  line-height: 1.6;
   font-weight: 300;
   transition: color 0.3s ease;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
-.amenity-card:hover p {
-  color: #d1d1cf; /* Text dims on hover background */
+  /* ===== Scroll Reveal ===== */
+.amenities-container {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(3px);
+  animation: amenityReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
 }
 
-/* Responsive for small screens */
+.amenity-card {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(3px);
+  animation: amenityReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
+}
+
+.amenity-card:nth-child(2) {
+  animation-range: entry 3% entry 63%;
+}
+.amenity-card:nth-child(3) {
+  animation-range: entry 6% entry 66%;
+}
+.amenity-card:nth-child(4) {
+  animation-range: entry 9% entry 69%;
+}
+.amenity-card:nth-child(5) {
+  animation-range: entry 12% entry 72%;
+}
+.amenity-card:nth-child(6) {
+  animation-range: entry 15% entry 75%;
+}
+.amenity-card:nth-child(7) {
+  animation-range: entry 18% entry 78%;
+}
+.amenity-card:nth-child(8) {
+  animation-range: entry 21% entry 81%;
+}
+
+@keyframes amenityReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .amenities {
     padding: 80px 20px;
@@ -108,7 +172,6 @@
   .amenity-card {
     width: 100%;
     max-width: 350px;
-    padding: 35px 20px;
-    border-width: 1.5px;
+    padding: 35px 25px;
   }
 }

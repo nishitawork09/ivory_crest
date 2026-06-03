@@ -1,78 +1,220 @@
+/* ===== Google Fonts Import ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
 /* ===== Full Background ===== */
 .luxury-container {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Updated to Clean Ivory */
   background-color: #faf9f6;
   position: relative;
   overflow: hidden;
-  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* Luxury Texture Overlay (Subtle adjustment for light theme) */
 .luxury-container::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0.02;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png"); /* Optional texture */
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
   pointer-events: none;
 }
 
-/* ===== Luxury Light Card ===== */
+/* ===== Ambient Orbs ===== */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: orbFloat linear infinite;
+}
+
+.orb1 {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(
+    circle,
+    rgba(200, 190, 170, 0.18) 0%,
+    transparent 70%
+  );
+  top: -80px;
+  left: -80px;
+  animation-duration: 18s;
+}
+
+.orb2 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(
+    circle,
+    rgba(180, 170, 150, 0.14) 0%,
+    transparent 70%
+  );
+  bottom: -60px;
+  right: -60px;
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+.orb3 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle,
+    rgba(210, 200, 185, 0.12) 0%,
+    transparent 70%
+  );
+  top: 50%;
+  left: 60%;
+  animation-duration: 28s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -20px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 30px) rotate(240deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+/* ===== Luxury Card ===== */
 .luxury-card {
-  background: #ffffff; /* Pure white card */
+  background: #ffffff;
   padding: 60px 45px;
   width: 420px;
-  border-radius: 24px; /* Matches the rounded payment card */
+  border-radius: 24px;
   border: 1px solid #e8e6e1;
   box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.04);
   text-align: center;
-  animation: fadeIn 0.8s cubic-bezier(0.2, 1, 0.3, 1);
   z-index: 1;
+  position: relative;
+  animation: silkenVeilCard 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Idle sheen pulse */
+.luxury-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  pointer-events: none;
+  animation: sheenPulse 5s ease-in-out infinite;
+}
+
+@keyframes silkenVeilCard {
+  0% {
+    opacity: 0;
+    transform: translateY(44px) scale(0.95);
+    filter: blur(6px);
+  }
+  55% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sheenPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
 }
 
 /* ===== Brand Name ===== */
 .brand {
-  font-family: "Cinzel", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 30px;
-  color: #1a1a1a; /* Charcoal */
+  font-weight: 400;
+  color: #1a1a1a;
   letter-spacing: 6px;
   text-transform: uppercase;
   margin-bottom: 8px;
+  animation: silkenSlideDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 /* ===== Subtitle ===== */
 .luxury-card h2 {
-  color: #666; /* Subtle grey subtitle */
+  color: #666;
   font-weight: 400;
   font-size: 12px;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 40px;
+  font-family: "Montserrat", sans-serif;
+  animation: silkenSlideDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
 }
 
-/* ===== Inputs (Pill Shape) ===== */
+@keyframes silkenSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ===== Inputs ===== */
 .luxury-card input {
   width: 100%;
   padding: 16px 25px;
   margin: 12px 0;
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px;
   border: 1px solid #e8e6e1;
   background-color: #ffffff;
   color: #1a1a1a;
   font-size: 14px;
   outline: none;
-  transition: all 0.4s ease;
+  transition:
+    border-color 0.4s ease,
+    background-color 0.4s ease,
+    box-shadow 0.4s ease;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  animation: silkenSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Stagger — works whether the name field is shown or hidden */
+.luxury-card input:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+.luxury-card input:nth-of-type(2) {
+  animation-delay: 0.62s;
+}
+.luxury-card input:nth-of-type(3) {
+  animation-delay: 0.74s;
 }
 
 .luxury-card input:focus {
   border-color: #1a1a1a;
   background-color: #faf9f6;
+  box-shadow: 0 0 0 4px rgba(26, 26, 26, 0.04);
 }
 
 .luxury-card input::placeholder {
@@ -80,28 +222,71 @@
   letter-spacing: 1px;
 }
 
-/* ===== Button (Pill + Inverted Hover) ===== */
+/* ===== Primary Button ===== */
 .luxury-card button {
   width: 100%;
   padding: 18px;
   margin-top: 25px;
-  border-radius: 50px; /* Pill shape */
-  border: 1px solid #1a1a1a;
-  background-color: #1a1a1a; /* Solid charcoal */
+  border-radius: 999px;
+  border: 1px solid #222222;
+  background: #222222;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   font-weight: 600;
   font-size: 12px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: silkenSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+/* Ripple on hover */
+.luxury-card button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.55s ease,
+    height 0.55s ease;
+}
+
+.luxury-card button:hover::before {
+  width: 320px;
+  height: 320px;
 }
 
 .luxury-card button:hover {
-  background-color: #ffffff; /* Inverts on hover */
-  color: #1a1a1a;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #d6d6d6;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+}
+
+.luxury-card button:active {
+  transform: scale(0.97);
+}
+
+@keyframes silkenSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 /* ===== Switch Text ===== */
@@ -111,63 +296,99 @@
   font-size: 11px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  animation: silkenFadeIn 0.8s ease 0.92s both;
 }
 
 .switch span {
-  color: #1a1a1a; /* Charcoal link */
-  font-weight: 700;
+  color: #222222;
+  font-weight: 600;
   cursor: pointer;
-  margin-left: 8px;
-  transition: 0.3s;
-  border-bottom: 1px solid transparent;
+  margin-left: 6px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.switch span:hover {
-  border-bottom: 1px solid #1a1a1a;
+.switch span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: #222222;
+  transition: width 0.3s ease;
 }
 
+.switch span:hover::after {
+  width: 100%;
+}
+
+/* ===== Back Button ===== */
 .back {
-  margin-top: 20px;
-  color: #aaa;
+  margin-top: 25px;
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid #e0ded9;
+  color: #888;
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif;
+  animation: silkenFadeIn 0.8s ease 1s both;
 }
 
 .back:hover {
-  color: #1a1a1a;
+  background: #222222;
+  color: #ffffff;
+  border-color: #222222;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* ===== Toast Notification (Matching Payment Style) ===== */
+@keyframes silkenFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== Toast ===== */
 .toast {
   position: fixed;
   top: 30px;
   right: 30px;
   padding: 16px 30px;
-  border-radius: 50px; /* Pill shape toasts */
+  border-radius: 50px;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  animation: slideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: toastSlideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   z-index: 999;
+  font-family: "Montserrat", sans-serif;
 }
 
 .toast-success {
-  background-color: #1b3a2a; /* Dark Forest Green */
+  background-color: #1b3a2a;
   border: 1px solid #2ecc71;
 }
-
 .toast-error {
-  background-color: #3d1a1a; /* Deep Maroon */
+  background-color: #3d1a1a;
   border: 1px solid #e63946;
 }
+.toast-warning {
+  background-color: #3a2e1a;
+  border: 1px solid #f0a500;
+}
 
-/* Animations and Responsive remain consistent */
-@keyframes slideIn {
+@keyframes toastSlideIn {
   from {
     opacity: 0;
     transform: translateX(50px);
@@ -178,22 +399,13 @@
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* ===== Responsive ===== */
 @media (max-width: 480px) {
   .luxury-card {
     width: 90%;
     padding: 40px 25px;
   }
+
   .brand {
     font-size: 24px;
   }

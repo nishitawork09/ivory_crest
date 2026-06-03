@@ -1,53 +1,86 @@
-/* BookingTable.css */
+/* ===== TABLE ===== */
 .bookingTable {
   width: 100%;
   border-collapse: collapse;
-  background: rgba(13, 31, 35, 0.6);
-  border-radius: 4px;
+  background: #ffffff;
+  border-radius: 14px;
   overflow: hidden;
+  border: 1px solid #e6e4df;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
+/* ===== HEADER ===== */
 .bookingTable th {
-  background: #0d1f23;
-  color: #69818d;
+  background: #f7f6f3;
+  color: #666;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding: 20px;
-  border-bottom: 1px solid rgba(175, 179, 183, 0.1);
+  padding: 16px;
+  border-bottom: 1px solid #e6e4df;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+  font-weight: 600;
 }
 
+/* ===== CELLS ===== */
 .bookingTable td {
-  padding: 20px;
-  color: #afb3b7;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  color: #333;
   font-size: 14px;
+  border-bottom: 1px solid #f0efec;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+  font-weight: 300;
 }
 
-/* BookingRow.css */
+/* Remove last border */
+.bookingTable tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== ROW HOVER ===== */
+.bookingTable tr:hover {
+  background: #faf9f6;
+}
+
+/* ===== ACTION BUTTON ===== */
 .actionBtn {
   background: transparent;
-  border: 1px solid #69818d;
-  color: #afb3b7;
-  padding: 8px 16px;
+  border: 1px solid #d6d6d6;
+  color: #333;
+  padding: 8px 14px;
+  border-radius: 999px;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
 .actionBtn:hover {
-  background: #69818d;
-  color: #0d1f23;
+  background: #222;
+  color: #fff;
+  border-color: #222;
+  transform: translateY(-2px);
 }
 
+/* ===== CANCEL BUTTON ===== */
 .cancelBtn {
   background: transparent;
-  border: 1px solid rgba(192, 57, 43, 0.4);
-  color: #ff8a8a;
-  padding: 8px 16px;
+  border: 1px solid rgba(176, 42, 42, 0.3);
+  color: #b02a2a;
+  padding: 8px 14px;
+  border-radius: 999px;
   font-size: 11px;
   text-transform: uppercase;
   cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+}
+
+.cancelBtn:hover {
+  background: #b02a2a;
+  color: #fff;
+  border-color: #b02a2a;
+  transform: translateY(-2px);
 }

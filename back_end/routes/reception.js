@@ -14,7 +14,7 @@ router.get("/bookings", verifyToken, isReception, async (req, res) => {
   try {
     const bookings = await Booking.find()
       .populate("userId", "name email")
-      .populate("roomId", "title price");
+      .populate("roomId", "title price roomNumber");
 
     res.json(bookings);
   } catch (err) {
@@ -135,9 +135,21 @@ router.post("/walkin", verifyToken, isReception, async (req, res) => {
     } = req.body;
 
     const room = await Room.findById(roomId);
-
     if (!room) {
       return res.status(404).json({ message: "Room not found" });
+    }
+
+    const conflict = await Booking.findOne({
+      roomId,
+      status: { $in: ["Booked", "Checked-In"] },
+      checkin: { $lt: checkout },
+      checkout: { $gt: checkin },
+    });
+
+    if (conflict) {
+      return res.status(409).json({
+        message: "Room is already booked for the selected dates",
+      });
     }
 
     const booking = new Booking({
@@ -156,21 +168,12 @@ router.post("/walkin", verifyToken, isReception, async (req, res) => {
 
     await booking.save();
 
-    // Mark room as occupied
-    await Room.findByIdAndUpdate(roomId, {
-      available: false,
-    });
+    await Room.findByIdAndUpdate(roomId, { available: false });
 
-    res.json({
-      message: "Walk-in booking created",
-      booking,
-    });
+    res.json({ message: "Walk-in booking created", booking });
   } catch (err) {
     console.error(err);
-
-    res.status(500).json({
-      message: "Walk-in booking failed",
-    });
+    res.status(500).json({ message: "Walk-in booking failed" });
   }
 });
 

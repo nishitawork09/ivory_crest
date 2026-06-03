@@ -1,13 +1,17 @@
-/* --- Section Title --- */
+/* ===== Google Fonts Import ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* ===== Section Title ===== */
 .section-title h3 {
   text-align: center;
   font-size: clamp(30px, 4vw, 42px);
   font-weight: 300;
   letter-spacing: 8px;
   text-transform: uppercase;
-  color: #1a1a1a; /* Dark text for light theme */
-  margin-bottom: 60px;
+  color: #1a1a1a;
+  /* margin-bottom: 60px; */
   position: relative;
+  font-family: "Cormorant Garamond", serif; /* ✅ */
 }
 
 .section-title h3::after {
@@ -15,133 +19,182 @@
   display: block;
   width: 60px;
   height: 2px;
-  background-color: #1a1a1a; /* Black accent line */
+  background-color: #1a1a1a;
   margin: 15px auto 0;
 }
 
-/* --- Container Grid --- */
+/* ===== Container ===== */
 .rooms-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
   padding: 60px 5%;
-  background-color: transparent;
 }
 
-/* --- Room Card --- */
+/* ===== Room Card ===== */
 .room-card {
-  margin: auto;
-  background: #ffffff; /* White card */
-  border-radius: 12px; /* Smoother edges for a modern feel */
+  background: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid #eeeeee; /* Subtle border */
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05); /* Softer shadow */
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  width: 100%;
+  border: 1px solid #e6e4df;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .room-card:hover {
-  transform: translateY(-10px);
-  border-color: #d1d1d1;
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-10px) scale(1.01);
+  border-color: #d6d6d6;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
 }
 
-/* --- Room Image --- */
+/* ===== Image ===== */
 .room-img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  filter: grayscale(20%); /* Clean, slightly desaturated look */
+  filter: grayscale(15%) contrast(95%);
   transition: all 0.6s ease;
 }
 
 .room-card:hover .room-img {
-  filter: grayscale(0%);
-  transform: scale(1.05);
+  filter: grayscale(0%) contrast(100%);
+  transform: scale(1.06);
 }
 
-/* --- Room Content --- */
+/* ===== Content ===== */
 .room-content {
-  padding: 30px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 }
 
 .room-title {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #1a1a1a;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", serif; /* ✅ */
 }
 
 .room-desc {
   font-size: 14px;
   line-height: 1.6;
-  color: #666666; /* Balanced grey */
-  margin-bottom: 20px;
+  color: #666666;
+  margin-bottom: 18px;
   font-weight: 300;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
+/* ===== Price ===== */
 .room-price {
   font-weight: 600;
-  color: #1a1a1a; /* Bold black for price */
+  color: #1a1a1a;
   font-size: 22px;
   letter-spacing: 1px;
+  font-family: "Cormorant Garamond", serif; /* ✅ */
 }
 
 .room-capacity {
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #999;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
-/* --- Booking Button --- */
+/* ===== Button ===== */
 .book-btn {
-  background-color: #1a1a1a; /* Dark background */
-  color: #ffffff; /* White text */
-  border: 1px solid #1a1a1a;
-  border-radius: 50px; /* Pill shape to match hero button */
-  padding: 14px 0;
-  width: 100%;
-  margin-top: 20px;
-  cursor: pointer;
-  font-size: 13px;
+  margin-top: 22px;
+  padding: 14px;
+  background: #222222;
+  color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 999px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
 .book-btn:hover:not(.disabled) {
-  background-color: #ffffff;
-  color: #1a1a1a; /* Inverts on hover */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #d6d6d6;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Availability Status --- */
+.book-btn:active {
+  transform: scale(0.97);
+}
+
+.book-btn.disabled {
+  background: #f3f3f3;
+  border-color: #e0e0e0;
+  color: #aaaaaa;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== Availability ===== */
 .availability {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 10px 0;
+  font-family: "Montserrat", sans-serif; /* ✅ */
 }
 
 .available {
-  color: #2d6a4f; /* Darker, sophisticated green */
+  color: #2d6a4f;
 }
 
 .not-available {
-  color: #9d0208; /* Sophisticated deep red */
+  color: #9d0208;
 }
 
-.book-btn.disabled {
-  background-color: #f0f0f0;
-  border-color: #e0e0e0;
-  color: #aaaaaa;
-  cursor: not-allowed;
+/* ===== Scroll Reveal ===== */
+.section-title h3 {
+  opacity: 0;
+  transform: translateY(-20px);
+  filter: blur(3px);
+  animation: roomsReveal linear both;
+  animation-timeline: view(block);
+  animation-range: entry 0% entry 40%;
+}
+
+.rooms-container {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(3px);
+  animation: roomsReveal linear both;
+  animation-timeline: view(block);
+  animation-range: entry 0% entry 50%;
+}
+
+@keyframes roomsReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .rooms-container {
+    padding: 40px 20px;
+  }
 }

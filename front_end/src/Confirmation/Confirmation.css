@@ -1,70 +1,160 @@
+/* ===== Google Fonts Import (remove if already in index.css) ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
 /* ===== Full Background ===== */
 .confirm-container {
   min-height: 100vh;
-  background-color: #faf9f6; /* Ivory White */
+  background-color: #faf9f6;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   position: relative;
-  font-family: "Inter", sans-serif;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* Subtle texture overlay for depth */
-.confirm-container::before {
-  content: "";
+/* ===== Ambient Orbs ===== */
+.orb {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.02;
+  border-radius: 50%;
   pointer-events: none;
+  animation: orbFloat linear infinite;
+}
+
+.orb1 {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(
+    circle,
+    rgba(200, 190, 170, 0.18) 0%,
+    transparent 70%
+  );
+  top: -80px;
+  left: -80px;
+  animation-duration: 18s;
+}
+
+.orb2 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(
+    circle,
+    rgba(180, 170, 150, 0.14) 0%,
+    transparent 70%
+  );
+  bottom: -60px;
+  right: -60px;
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+.orb3 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle,
+    rgba(210, 200, 185, 0.12) 0%,
+    transparent 70%
+  );
+  top: 50%;
+  left: 60%;
+  animation-duration: 28s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -20px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 30px) rotate(240deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
 }
 
 /* ===== Confirmation Card ===== */
 .confirm-card {
   width: 100%;
   max-width: 450px;
-  background: #ffffff; /* Pure White Card */
-  border-radius: 24px; /* Soft Pill Edges */
+  background: #ffffff;
+  border-radius: 24px;
   padding: 50px 40px;
   border: 1px solid #e8e6e1;
   box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.04);
   text-align: center;
-  animation: fadeIn 0.8s cubic-bezier(0.2, 1, 0.3, 1);
   z-index: 1;
+  position: relative;
+  animation: silkenVeilCard 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Idle sheen pulse */
+.confirm-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  pointer-events: none;
+  animation: sheenPulse 5s ease-in-out infinite;
 }
 
 /* Success Title */
 .confirm-card h1 {
-  font-family: "Cinzel", serif;
-  color: #1b3a2a; /* Deep Forest Green for Success */
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  color: #1b3a2a;
   margin-bottom: 10px;
   font-size: 24px;
   letter-spacing: 4px;
   text-transform: uppercase;
+  animation: silkenSlideDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 /* Room Name */
 .confirm-card h2 {
-  font-family: "Cinzel", serif;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
   margin-bottom: 25px;
   font-size: 18px;
-  font-weight: 400;
   letter-spacing: 2px;
-  color: #1a1a1a; /* Charcoal */
+  color: #1a1a1a;
+  animation: silkenSlideDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
 }
 
 /* Details Text */
 .confirm-card p {
   margin: 12px 0;
   font-size: 13px;
-  color: #666; /* Muted Grey */
+  color: #666;
   font-weight: 400;
   letter-spacing: 0.5px;
   display: flex;
   justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
+  animation: silkenSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.confirm-card p:nth-of-type(1) {
+  animation-delay: 0.48s;
+}
+.confirm-card p:nth-of-type(2) {
+  animation-delay: 0.56s;
+}
+.confirm-card p:nth-of-type(3) {
+  animation-delay: 0.64s;
+}
+.confirm-card p:nth-of-type(4) {
+  animation-delay: 0.72s;
 }
 
 /* Final Price Section */
@@ -76,66 +166,155 @@
   border-top: 1px solid #e8e6e1;
   border-bottom: 1px solid #e8e6e1;
   font-weight: 600;
+  font-family: "Cormorant Garamond", serif;
+  animation: silkenSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
 }
 
-/* Button Group */
+/* ===== Button Group ===== */
 .Btns {
   display: flex;
   gap: 15px;
   justify-content: center;
   margin-top: 30px;
+  animation: silkenSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
 }
 
-/* Action Buttons (Pill Shapes) */
+/* ===== Base Button ===== */
 .confirm-card button {
   flex: 1;
   padding: 16px;
-  background: #ffffff;
-  color: #1a1a1a;
-  border: 1px solid #1a1a1a;
-  border-radius: 50px; /* Pill Shape */
-  cursor: pointer;
+  border-radius: 999px;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Primary Button (Inverted Theme) */
-.confirm-card button:first-child {
-  background: #1a1a1a;
+/* Ripple on hover */
+.confirm-card button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.55s ease,
+    height 0.55s ease;
+}
+
+.confirm-card button:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+/* ===== PRIMARY: Download PDF ===== */
+.download-btn {
+  background: #222222;
   color: #ffffff;
+  border: 1px solid #222222;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Hover States (Inversion Effect) */
-.confirm-card button:first-child:hover {
+.download-btn:hover {
   background: #ffffff;
-  color: #1a1a1a;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  color: #222222;
+  border: 1px solid #d6d6d6;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
 }
 
-.confirm-card button:last-child:hover {
-  background: #1a1a1a;
+.download-btn:active {
+  transform: scale(0.97);
+  background: #f5f5f5;
+}
+
+/* ===== SECONDARY: Home Button ===== */
+.home-btn {
+  background: transparent;
+  color: #222222;
+  border: 1px solid #dcdcdc;
+}
+
+.home-btn:hover {
+  background: #222222;
   color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-color: #222222;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.07);
 }
 
-/* Animations */
-@keyframes fadeIn {
+.home-btn:active {
+  transform: scale(0.97);
+}
+
+.confirm-card button:focus-visible {
+  outline: 2px solid #999;
+  outline-offset: 4px;
+}
+
+/* ===== Keyframes ===== */
+@keyframes silkenVeilCard {
+  0% {
+    opacity: 0;
+    transform: translateY(44px) scale(0.95);
+    filter: blur(6px);
+  }
+  55% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sheenPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes silkenSlideDown {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-14px);
+    filter: blur(3px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
-/* ===== Responsive Adjustments ===== */
+@keyframes silkenSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 480px) {
   .confirm-card {
     width: 90%;

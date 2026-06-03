@@ -8,6 +8,7 @@ export default function BookingTable({ bookings, refreshBookings }) {
         <tr>
           <th>Guest</th>
           <th>Room</th>
+          <th>Room No</th>
           <th>Check-In</th>
           <th>Check-Out</th>
           <th>Status</th>

@@ -1,0 +1,328 @@
+/* ── A_Analytics.css — matches project design system ─────────────────────── */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* Root wrapper */
+.an-root {
+  padding: 48px 32px;
+  background-color: #faf9f6;
+  font-family: "Montserrat", sans-serif;
+  color: #1a1a1a;
+  min-height: 100%;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.an-root.an-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.an-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.an-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.an-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #999999;
+  margin: 0;
+}
+
+/* ── Year selector ───────────────────────────────────────────────────────────── */
+.an-year-selector {
+  display: flex;
+  gap: 6px;
+}
+
+.an-year-btn {
+  padding: 7px 18px;
+  border-radius: 999px;
+  border: 1px solid #d6d6d6;
+  background: transparent;
+  color: #666666;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.an-year-btn:hover {
+  border-color: #1a1a1a;
+  color: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.an-year-btn.active {
+  background: #222222;
+  border-color: #222222;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────────── */
+.an-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.an-tab {
+  padding: 10px 22px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #999999;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-bottom: -1px;
+}
+
+.an-tab:hover {
+  color: #1a1a1a;
+}
+
+.an-tab.active {
+  color: #1a1a1a;
+  border-bottom-color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* ── KPI Cards ───────────────────────────────────────────────────────────────── */
+.an-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.an-kpi-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
+  padding: 24px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: cardIn 0.4s ease forwards;
+  animation-delay: var(--delay, 0s);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.an-kpi-card:hover {
+  border-color: rgba(0, 0, 0, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+@keyframes cardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.an-kpi-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.an-kpi-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.an-kpi-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #999999;
+  margin: 0 0 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.an-kpi-value {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.an-kpi-delta {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.an-kpi-delta.pos {
+  background: rgba(34, 139, 86, 0.08);
+  color: #228b56;
+}
+
+.an-kpi-delta.neg {
+  background: rgba(185, 74, 74, 0.08);
+  color: #b94a4a;
+}
+
+/* ── Charts Grid ─────────────────────────────────────────────────────────────── */
+.an-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.an-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
+  padding: 28px 24px 18px;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.an-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.an-card--wide {
+  grid-column: span 2;
+}
+
+.an-card-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #999999;
+  margin: 0 0 20px;
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────────────────────── */
+.an-tooltip {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.an-tooltip-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #999999;
+  margin: 0 0 4px;
+}
+
+.an-tooltip-value {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* ── Room Legend (pie) ───────────────────────────────────────────────────────── */
+.an-legend {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.an-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.an-legend-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.an-legend-name {
+  flex: 1;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+.an-legend-count {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+/* ── Loading state ───────────────────────────────────────────────────────────── */
+.an-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #999999;
+}

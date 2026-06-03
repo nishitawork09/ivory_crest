@@ -1,135 +1,167 @@
-/* ===== Full Page Background ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* ===== Page Background ===== */
 .roomsContainer {
   padding: 80px 5%;
   min-height: 100vh;
-  /* Matching your signature Slate Gradient */
-  background: linear-gradient(
-    to bottom,
-    #93A5AF 0%,
-    #69818D 30%,
-    #2D4A53 60%,
-    #0D1F23 100%
-  );
-  background-attachment: fixed;
+  /* soft ivory gradient */
+  background: linear-gradient(to bottom, #faf9f6 0%, #f2f1ed 50%, #eceae5 100%);
 }
 
-/* ===== Title Styling ===== */
+/* ===== Main Title (Editorial Style) ===== */
 .roomsTitle {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(28px, 4vw, 36px);
-  letter-spacing: 6px;
-  text-transform: uppercase;
+  /* 🔥 Updated to Cormorant Garamond */
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(34px, 5vw, 42px); /* Slightly larger for serif elegance */
+  font-weight: 600;
+  letter-spacing: 1px; /* Serif headings look better with tight spacing */
+  text-transform: capitalize; /* Editorial "Old Money" feel */
   margin-bottom: 50px;
-  color: #ffffff;
+  color: #1a1a1a;
   text-align: center;
 }
 
-/* ===== Responsive Grid ===== */
+/* ===== Grid ===== */
 .roomsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 35px;
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-/* ===== Slate Room Card ===== */
+/* ===== Room Card ===== */
 .roomCard {
-  background: #0D1F23; /* Deepest Midnight from your palette */
-  border-radius: 4px; /* Sharp modern edges */
+  background: #ffffff;
+  border-radius: 12px; /* Slightly tighter for luxury feel */
   overflow: hidden;
-  border: 1px solid rgba(175, 179, 183, 0.1);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid #e6e4df;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
 }
 
+/* subtle top accent */
+.roomCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #1a1a1a, #d4af37); /* Hint of gold */
+  opacity: 0.3;
+}
+
+/* Hover */
 .roomCard:hover {
-  transform: translateY(-8px);
-  border-color: rgba(175, 179, 183, 0.3);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  border-color: #d6d6d6;
 }
 
-/* Image */
+/* ===== Image ===== */
 .roomImage {
   width: 100%;
-  height: 220px;
+  height: 240px;
   object-fit: cover;
-  filter: brightness(0.9); /* Subtly darkens to blend with card */
-  border-bottom: 1px solid rgba(175, 179, 183, 0.1);
+  filter: grayscale(10%) contrast(95%);
+  transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Content Area */
+.roomCard:hover .roomImage {
+  filter: grayscale(0%) contrast(100%);
+  transform: scale(1.08);
+}
+
+/* ===== Content ===== */
 .roomContent {
-  padding: 25px;
+  padding: 24px;
 }
 
 .roomTitle {
-  font-family: 'Cinzel', serif;
-  font-size: 20px;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-  color: #AFB3B7; /* Frost Grey */
+  /* 🔥 Updated to Cormorant Garamond */
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  color: #1a1a1a;
 }
 
 .roomDesc {
+  /* 🔥 Updated to Montserrat */
+  font-family: "Montserrat", sans-serif;
   font-size: 13px;
-  line-height: 1.6;
-  color: #69818D; /* Steel Blue */
-  margin-bottom: 20px;
+  line-height: 1.7;
+  color: #666666;
+  margin-bottom: 18px;
   font-weight: 300;
 }
 
 .roomPrice {
-  font-size: 18px;
-  font-weight: 400;
-  color: #ffffff;
-  margin-bottom: 20px;
+  /* 🔥 Updated to Montserrat */
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 24px;
   display: block;
 }
 
-/* ===== Admin Button Area ===== */
+/* ===== Button Area ===== */
 .roomButtons {
   display: flex;
   gap: 12px;
 }
 
-/* Edit Button - Steel Blue Ghost */
-.roomEditBtn {
+/* Common Button Styles */
+.roomEditBtn,
+.roomDeleteBtn {
   flex: 1;
-  background-color: transparent;
-  color: #AFB3B7;
-  border: 1px solid #69818D;
-  padding: 10px;
-  border-radius: 2px;
-  cursor: pointer;
-  font-size: 11px;
+  padding: 12px;
+  font-family: "Montserrat", sans-serif; /* Buttons stay modern */
+  font-size: 10px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: 0.3s ease;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  border-radius: 4px; /* Squared edges often feel more "expensive" */
+  transition: all 0.3s ease;
+}
+
+/* ===== Edit Button ===== */
+.roomEditBtn {
+  background: transparent;
+  color: #222;
+  border: 1px solid #d6d6d6;
 }
 
 .roomEditBtn:hover {
-  background-color: #69818D;
-  color: #0D1F23;
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #1a1a1a;
 }
 
-/* Delete Button - Muted Crimson Ghost */
+/* ===== Delete Button ===== */
 .roomDeleteBtn {
-  flex: 1;
-  background-color: transparent;
-  color: #ff8a8a;
-  border: 1px solid rgba(192, 57, 43, 0.4);
-  padding: 10px;
-  border-radius: 2px;
-  cursor: pointer;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: 0.3s ease;
+  background: transparent;
+  color: #b02a2a;
+  border: 1px solid rgba(176, 42, 42, 0.2);
 }
 
 .roomDeleteBtn:hover {
-  background-color: #c0392b;
-  color: white;
-  border-color: #c0392b;
+  background: #b02a2a;
+  color: #ffffff;
+  border-color: #b02a2a;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .roomsContainer {
+    padding: 40px 20px;
+  }
+  .roomContent {
+    padding: 20px;
+  }
 }

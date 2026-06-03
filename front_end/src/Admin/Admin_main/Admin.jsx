@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AdminSidebar from "../AdminSidebar/AdminSidebar";
 import Rooms from "../A_Room/A_Rooms";
+import Analytics from "../A_Analytics/A_Analytics";
 import AddRoom from "../AddRoom/A_AddRoom";
 import Bookings from "../A_Booking/A_Booking";
 import Users from "../A_user/A_User";
@@ -13,8 +14,8 @@ export default function Admin() {
 
   return (
     <div className="adminContainer">
-      <LogoutButton variant="other"/>
-      <AdminSidebar setSection={setSection} />
+      <LogoutButton variant="other" />
+      <AdminSidebar setSection={setSection} activeSection={section} />
 
       <div className="adminMain">
         <div className="adminHeader">
@@ -29,6 +30,8 @@ export default function Admin() {
           {section === "bookings" && <Bookings />}
 
           {section === "users" && <Users />}
+
+          {section === "analytics" && <Analytics />}
         </div>
       </div>
     </div>

@@ -40,8 +40,6 @@ export default function WalkInForm({ refreshBookings }) {
         },
       });
 
-      console.log("Rooms from API:", res.data);
-
       const roomData = Array.isArray(res.data)
         ? res.data
         : res.data.rooms || res.data.data || [];
@@ -57,6 +55,7 @@ export default function WalkInForm({ refreshBookings }) {
   };
 
   const getRoomLabel = (room) => {
+    const number = room.roomNumber ? `[${room.roomNumber}]` : "";
     const name =
       room.title ||
       room.name ||
@@ -64,7 +63,7 @@ export default function WalkInForm({ refreshBookings }) {
       `Room ${room.roomNumber || room.number || ""}`;
     const price =
       room.price || room.pricePerNight || room.rate || room.basePrice || 0;
-    return { name, price };
+    return { name, number, price };
   };
 
   const handleChange = (e) => {
@@ -175,10 +174,10 @@ export default function WalkInForm({ refreshBookings }) {
             {loading ? "Loading rooms..." : "Select Room"}
           </option>
           {rooms.map((room) => {
-            const { name, price } = getRoomLabel(room);
+            const { name, number, price } = getRoomLabel(room);
             return (
               <option key={room._id} value={room._id}>
-                {name} - ₹{price}
+                {number} {name} - ₹{price}
               </option>
             );
           })}

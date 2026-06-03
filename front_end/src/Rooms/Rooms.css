@@ -3,3 +3,55 @@
   min-height: 100vh;
   width: 100%;
 }
+
+.back-btn-fixed {
+  position: sticky;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1100;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  width: fit-content;
+}
+
+.back-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(26, 26, 26, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-btn-fixed:hover .back-circle {
+  transform: translateX(-5px);
+  background: #000;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.back-btn-fixed:active .back-circle {
+  transform: translateX(-2px) scale(0.95);
+}
+
+.back-btn-fixed:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.back-btn-fixed:focus-visible .back-circle {
+  outline: 2px solid #999;
+  outline-offset: 4px;
+}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Bookingform.css";
 import LogoutButton from "../Logout-btn/Logout-btn";
-
+import ProfileAvatar from "../profile-avatar/profile-avatar";
 export default function Bookingform() {
   const nav = useNavigate();
 
@@ -60,12 +60,15 @@ export default function Bookingform() {
       room,
       checkin: form.checkin,
       checkout: form.checkout,
+      guests: 1,
+
+      isReschedule: false, // 🔥 VERY IMPORTANT
     };
 
-    /* save booking data */
+    // save booking data
     localStorage.setItem("bookingData", JSON.stringify(bookingData));
 
-    /* save dates for availability check */
+    // save dates
     localStorage.setItem("checkin", form.checkin);
     localStorage.setItem("checkout", form.checkout);
 
@@ -76,9 +79,12 @@ export default function Bookingform() {
 
   return (
     <div className="booking-container">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
       {toast && <div className={`toast toast-${toastType}`}>{toast}</div>}
 
-      <LogoutButton />
+      <ProfileAvatar />
 
       <div className="booking-card">
         <div className="room-info">

@@ -33,10 +33,7 @@ const bookingSchema = new mongoose.Schema({
 
   actualCheckin: Date,
   actualCheckout: Date,
-
-  // ── Added for 24-hour reminder ─────────────────────────────
-  // Set to true once the reminder email has been sent.
-  // Prevents duplicate emails across cron ticks.
+  
   reminderSent: {
     type: Boolean,
     default: false,

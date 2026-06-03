@@ -19,8 +19,16 @@ export default function Ourrooms({ showButton }) {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        const sorted = data.sort((a, b) => a.price - b.price);
-        setRooms(sorted);
+        const seen = new Set();
+        const unique = data
+          .sort((a, b) => a.price - b.price)
+          .filter((room) => {
+            if (seen.has(room.title)) return false;
+            seen.add(room.title);
+            return true;
+          });
+
+        setRooms(unique);
       });
   }, []);
 

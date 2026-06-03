@@ -5,6 +5,10 @@
   margin-right: 8px;
   color: white;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .cancelBtn {
@@ -13,4 +17,8 @@
   padding: 6px 12px;
   color: white;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }

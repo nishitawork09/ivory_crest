@@ -16,13 +16,7 @@ async function sendBookingConfirmationEmail(booking) {
   const name = booking.guestName || "Guest";
   const room = booking.roomId;
   const roomLabel = room?.title || room?.roomNumber || "Your Room";
-
-  if (!to) {
-    console.warn(
-      `[Mailer] Booking ${booking._id} has no guestEmail — skipping confirmation.`,
-    );
-    return;
-  }
+  const roomNumber = room?.roomNumber || null;
 
   const pdfBuffer = await generateBookingPDF(booking);
 
@@ -33,6 +27,7 @@ async function sendBookingConfirmationEmail(booking) {
     html: buildHtml({
       name,
       roomLabel,
+      roomNumber,
       bookingId: booking._id,
       checkin: booking.checkin,
       checkout: booking.checkout,
@@ -58,6 +53,7 @@ async function sendCheckinReminderEmail(booking) {
   const name = booking.guestName || "Guest";
   const room = booking.roomId;
   const roomLabel = room?.title || room?.roomNumber || "Your Room";
+  const roomNumber = room?.roomNumber || null;
 
   if (!to) {
     console.warn(
@@ -75,6 +71,7 @@ async function sendCheckinReminderEmail(booking) {
     html: buildHtml({
       name,
       roomLabel,
+      roomNumber,
       bookingId: booking._id,
       checkin: booking.checkin,
       checkout: booking.checkout,
@@ -98,6 +95,7 @@ async function sendCheckinReminderEmail(booking) {
 function buildHtml({
   name,
   roomLabel,
+  roomNumber,
   bookingId,
   checkin,
   checkout,
@@ -137,6 +135,7 @@ function buildHtml({
       <table style="width:100%;border-collapse:collapse;margin:20px 0;background:#fff;border:1px solid #e8dfc0;border-radius:3px">
         ${row("Booking ID", bookingId)}
         ${row("Room", roomLabel)}
+        ${row("Room Number", roomNumber || "—")}
         ${row("Check-In", checkin)}
         ${row("Check-Out", checkout)}
         ${row("Nights", nights != null ? `${nights} night${nights !== 1 ? "s" : ""}` : null)}

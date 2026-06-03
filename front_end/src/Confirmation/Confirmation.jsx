@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { jsPDF } from "jspdf";
 import logo from "../assets/IvoryCrest_logo.png";
 import "./Confirmation.css";
-import LogoutButton from "../Logout-btn/Logout-btn";
+import Footer from "../Footer/Footer";
+import ProfileAvatar from "../profile-avatar/profile-avatar";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/button";
 
@@ -90,6 +91,7 @@ export default function Confirmation() {
     y = drawRow("Confirmation No", data.bookingId, y);
     y = drawRow("Guest Name", data.guestName || "Valued Guest", y);
     y = drawRow("Room Type", data.room?.title || "Luxury Suite", y);
+    y = drawRow("Room Number", data.room?.roomNumber || "—", y);
     y = drawRow("Check-In", data.checkin, y);
     y = drawRow("Check-Out", data.checkout, y);
 
@@ -135,30 +137,39 @@ export default function Confirmation() {
   if (!data) return null;
 
   return (
-    <div className="confirm-container">
-      <LogoutButton />
-      <div className="confirm-card">
-        <h1>Booking Confirmed ✅</h1>
-        <h2>{data.room?.title || "Room Booked"}</h2>
-        <div className="details-grid">
-          <p>
-            <b>Booking ID:</b> {data.bookingId}
-          </p>
-          <p>
-            <b>Check-in:</b> {data.checkin}
-          </p>
-          <p>
-            <b>Check-out:</b> {data.checkout}
-          </p>
-        </div>
-        <h3 className="price-tag">Total Paid: ₹{data.totalPrice}</h3>
-        <div className="Btns">
-          <button className="download-btn" onClick={downloadReceipt}>
-            Download Receipt (PDF)
-          </button>
-          <Button />
+    <>
+      <div className="confirm-container">
+        <ProfileAvatar />
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+        <div className="confirm-card">
+          <h1>Booking Confirmed ✅</h1>
+          <h2>{data.room?.title || "Room Booked"}</h2>
+          <div className="details-grid">
+            <p>
+              <b>Booking ID:</b> {data.bookingId}
+            </p>
+            <p>
+              <b>Room Number:</b> {data.room?.roomNumber || "—"}
+            </p>
+            <p>
+              <b>Check-in:</b> {data.checkin}
+            </p>
+            <p>
+              <b>Check-out:</b> {data.checkout}
+            </p>
+          </div>
+          <h3 className="price-tag">Total Paid: ₹{data.totalPrice}</h3>
+          <div className="Btns">
+            <button className="download-btn" onClick={downloadReceipt}>
+              Download Receipt (PDF)
+            </button>
+            <Button />
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }

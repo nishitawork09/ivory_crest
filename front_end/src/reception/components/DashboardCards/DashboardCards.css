@@ -1,4 +1,4 @@
-/* DashboardCards.css */
+/* ===== CONTAINER ===== */
 .cardsContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -6,25 +6,62 @@
   margin-bottom: 50px;
 }
 
+/* ===== CARD ===== */
 .card {
-  background: rgba(13, 31, 35, 0.8); /* Midnight Deep */
-  padding: 30px;
-  border-radius: 4px;
-  border: 1px solid rgba(175, 179, 183, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid #e6e4df;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #222, #999);
+  opacity: 0.2;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== TITLE ===== */
 .card h3 {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #69818d; /* Steel Blue */
-  margin-bottom: 15px;
+  color: #999;
+  margin-bottom: 12px;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+  font-weight: 600;
 }
 
+/* ===== VALUE ===== */
 .card p {
-  font-size: 32px;
-  font-weight: 300;
-  color: #afb3b7; /* Frost Grey */
+  font-size: 30px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: "Cormorant Garamond", serif; /* ✅ large display number */
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
 }

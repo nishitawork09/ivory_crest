@@ -50,6 +50,8 @@ export default function BookingRow({ booking, refreshBookings }) {
 
       <td>{booking.roomId?.title}</td>
 
+      <td>{booking.roomId?.roomNumber || "—"}</td>
+
       <td>{booking.checkin}</td>
 
       <td>{booking.checkout}</td>

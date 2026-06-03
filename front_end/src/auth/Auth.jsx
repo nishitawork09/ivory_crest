@@ -112,7 +112,9 @@ export default function Auth() {
   return (
     <div className="luxury-container">
       {toast && <div className={`toast toast-${toastType}`}>{toast}</div>}
-
+      <div className="orb orb1" />
+      <div className="orb orb2" />
+      <div className="orb orb3" />
       <div className="luxury-card">
         <h1 className="brand">Ivory Crest</h1>
 

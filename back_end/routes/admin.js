@@ -12,23 +12,56 @@ const router = express.Router();
 /* ---------- ROOMS ---------- */
 
 // Get all rooms
+// GET all rooms — restore to simple find()
 router.get("/rooms", verifyToken, isAdmin, async (req, res) => {
   try {
     const rooms = await Room.find();
     res.json(rooms);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
-// Add room
+// POST add room — duplicate check + roomNumber
 router.post("/rooms", verifyToken, isAdmin, async (req, res) => {
   try {
-    const newRoom = new Room(req.body);
-    await newRoom.save();
-    res.json(newRoom);
-  } catch (error) {
-    res.status(500).json(error);
+    const { roomNumber, title, price, capacity, img, desc } = req.body;
+
+    // Split "101,102" or "A101,B102" into individual numbers
+    const roomNumbers = roomNumber
+      .split(",")
+      .map((n) => n.trim())
+      .filter(Boolean);
+
+    if (roomNumbers.length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Enter at least one room number" });
+    }
+
+    // Check for duplicates
+    const existing = await Room.find({ roomNumber: { $in: roomNumbers } });
+    if (existing.length > 0) {
+      const duplicates = existing.map((r) => r.roomNumber).join(", ");
+      return res.status(409).json({
+        message: `These room numbers already exist: ${duplicates}`,
+      });
+    }
+
+    // Create one document per room number
+    const rooms = roomNumbers.map((num) => ({
+      roomNumber: num,
+      title,
+      price,
+      capacity,
+      img,
+      desc,
+    }));
+
+    const created = await Room.insertMany(rooms);
+    res.json({ message: `${created.length} room(s) added`, rooms: created });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
@@ -60,7 +93,7 @@ router.get("/bookings", verifyToken, isAdmin, async (req, res) => {
   try {
     const bookings = await Booking.find()
       .populate("userId", "email")
-      .populate("roomId", "title");
+      .populate("roomId", "title roomNumber"); // ← add roomNumber
 
     res.json(bookings);
   } catch (error) {

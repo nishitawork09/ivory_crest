@@ -1,22 +1,43 @@
-/* SearchBar.css */
+/* ===== SEARCH BAR ===== */
 .searchBar {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
+/* ===== INPUT + SELECT ===== */
 .searchBar input,
 .searchBar select {
-  background: #151515;
-  border: 1px solid #222;
-  color: #ffffff;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  color: #1a1a1a;
   padding: 12px 18px;
-  border-radius: 0;
+  font-size: 13px;
   outline: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  min-width: 180px;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+  font-weight: 300;
 }
 
+/* ===== FOCUS ===== */
 .searchBar input:focus,
 .searchBar select:focus {
-  border-color: #afb3b7;
+  border-color: #222;
+  box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.05);
+}
+
+/* ===== PLACEHOLDER ===== */
+.searchBar input::placeholder {
+  color: #999;
+  font-family: "Montserrat", sans-serif; /* ✅ */
+  font-weight: 300;
+}
+
+/* ===== HOVER ===== */
+.searchBar input:hover,
+.searchBar select:hover {
+  border-color: #cfcfcf;
 }

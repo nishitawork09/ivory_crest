@@ -1,101 +1,152 @@
-/* Container Wrapper - Switched to Light Theme */
+/* ===== Google Fonts Import ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap");
+
+/* ===== Section Wrapper ===== */
 .abtus-cont {
   padding: 120px 0;
-  background-color: #f6f8fa; /* Matches the Home background */
+  background-color: #faf9f6;
 }
 
-/* Container */
+/* ===== Container ===== */
 .abtus {
   width: 85%;
   max-width: 1100px;
   margin: auto;
 }
 
-/* Heading */
+/* ===== Heading ===== */
 .about-title {
   text-align: center;
   font-size: clamp(28px, 5vw, 42px);
   font-weight: 300;
   letter-spacing: 6px;
   text-transform: uppercase;
-  color: #1a1a1a; /* Dark for high contrast */
+  color: #1a1a1a;
   margin-bottom: 60px;
   position: relative;
+  font-family: "Cormorant Garamond", serif;
 }
 
-/* Monochromatic Accent Line (Replaces Gold) */
 .about-title::after {
   content: "";
-  width: 50px;
-  height: 2px; /* Slightly thicker for a modern look */
+  width: 60px;
+  height: 2px;
   background-color: #1a1a1a;
   display: block;
-  margin: 20px auto 0;
-  transition: width 0.5s ease;
+  margin: 18px auto 0;
+  transition: width 0.4s ease;
 }
 
 .abtus-cont:hover .about-title::after {
   width: 100px;
 }
 
-/* Content Box - Pill Shape Style */
+/* ===== Content Card ===== */
 .abtus-content {
-  background-color: #ffffff;
-  padding: 80px;
-  border-radius: 60px; /* High border-radius for that pill look */
-  border: 1px solid #cccccc;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.04),
-    0 2px 10px rgba(0, 0, 0, 0.02);
+  background: #ffffff;
+  padding: 70px 60px;
+  border-radius: 20px;
+  border: 1px solid #e6e4df;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   position: relative;
   overflow: hidden;
+  transition: all 0.4s ease;
 }
 
-/* Paragraph Styling */
+.abtus-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Paragraph ===== */
 .abtus-content p {
-  font-size: 17px;
-  line-height: 2;
-  color: #595959;
-  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #5f5f5f;
+  margin-bottom: 28px;
   font-weight: 300;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* Sub Headings (Replaced Gold with Dark Gray/Black) */
+/* ===== Sub Headings ===== */
 .abtus-content h3 {
-  font-size: 20px;
-  font-weight: 500; /* Made slightly bolder since it's not colored */
+  font-size: 19px;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #1a1a1a;
-  margin: 40px 0 20px;
+  margin: 35px 0 15px;
+  font-family: "Cormorant Garamond", serif;
 }
 
-/* List Styling */
+/* ===== List ===== */
 .abtus-content ul {
-  padding-left: 0;
   list-style: none;
-  margin-bottom: 30px;
+  padding-left: 0;
+  margin-bottom: 25px;
 }
 
 .abtus-content ul li {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   color: #666666;
+  padding-left: 26px;
   position: relative;
-  padding-left: 30px;
   font-weight: 300;
+  line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* Custom Minimalist Bullet Points (Replaced Gold) */
 .abtus-content ul li::before {
-  content: "—"; /* Using a modern dash instead of a bullet */
+  content: "—";
   position: absolute;
   left: 0;
   color: #1a1a1a;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-/* --- Responsive Design --- */
+/* ===== Scroll Reveal ===== */
+/* Animate the inner container, NOT the outer wrapper */
+.abtus {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(4px);
+  animation: abtusReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 55%;
+}
 
+.about-title {
+  opacity: 0;
+  transform: translateY(-20px);
+  filter: blur(3px);
+  animation: abtusReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 55%;
+}
+
+.abtus-content {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(3px);
+  animation: abtusReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
+}
+
+@keyframes abtusReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .abtus-cont {
     padding: 80px 20px;
@@ -106,18 +157,18 @@
   }
 
   .abtus-content {
-    padding: 50px 30px;
-    border-radius: 40px;
+    padding: 45px 25px;
+    border-radius: 16px;
+  }
+
+  .about-title {
+    letter-spacing: 4px;
   }
 }
 
 @media (max-width: 480px) {
-  .about-title {
-    letter-spacing: 3px;
-  }
-
   .abtus-content p {
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.8;
   }
 }

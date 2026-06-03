@@ -8,6 +8,8 @@ import Confirmation from "./Confirmation/Confirmation";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import Admin from "./Admin/Admin_main/Admin";
 import ReceptionDashboard from "./reception/ReceptionDashboard";
+import UserInfo from "./UserInfo/UserInfo";
+import EditProfile from "./editProfile/editProfile";
 // import Button from "./button/button";
 
 function App() {
@@ -70,11 +72,22 @@ function App() {
         <Route
           path="/reception"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute receptionOnly={true}>
               <ReceptionDashboard />
             </ProtectedRoute>
           }
         />
+
+        {/* userprofile */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <UserInfo />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/EditProfile" element={<EditProfile />} />
       </Routes>
     </>
   );

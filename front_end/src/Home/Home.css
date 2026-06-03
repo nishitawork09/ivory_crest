@@ -1,3 +1,6 @@
+/* ===== Google Fonts Import (remove if already in index.css) ===== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
 /* General Smooth Scrolling */
 * {
   scroll-behavior: smooth;
@@ -6,19 +9,12 @@
   box-sizing: border-box;
 }
 
-/* Main Wrapper - Updated to Ivory White */
+/* Main Wrapper */
 .landpage {
-  /* #FFFFF0 is classic Ivory; #FAF9F6 is a modern 'Off-White' Ivory */
   background-color: #faf9f6;
   color: #1a1a1a;
   min-height: 100vh;
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Hero Section */
@@ -29,8 +25,70 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  /* Ensure the hero matches the wrapper */
   background-color: #faf9f6;
+}
+
+/* ===== Ambient Orbs ===== */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: orbFloat linear infinite;
+}
+
+.orb1 {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(
+    circle,
+    rgba(200, 190, 170, 0.18) 0%,
+    transparent 70%
+  );
+  top: -80px;
+  left: -80px;
+  animation-duration: 18s;
+}
+
+.orb2 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(
+    circle,
+    rgba(180, 170, 150, 0.14) 0%,
+    transparent 70%
+  );
+  bottom: -60px;
+  right: -60px;
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+.orb3 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle,
+    rgba(210, 200, 185, 0.12) 0%,
+    transparent 70%
+  );
+  top: 50%;
+  left: 60%;
+  animation-duration: 28s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -20px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 30px) rotate(240deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
 }
 
 /* Hero Content */
@@ -47,6 +105,8 @@
   text-transform: uppercase;
   margin-bottom: 15px;
   color: #1a1a1a;
+  font-family: "Cormorant Garamond", serif;
+  animation: silkenSlideDown 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .middleTxt p {
@@ -56,43 +116,98 @@
   margin-bottom: 50px;
   color: #666666;
   text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  animation: silkenSlideDown 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
-/* Modern Monochromatic Pill Button */
+/* ===== HERO CTA BUTTON ===== */
 .middleTxt button {
-  background: transparent;
-  color: #1a1a1a;
-  /* High visibility border */
-  border: 2px solid #1a1a1a;
-  padding: 18px 50px;
-  font-size: 14px;
+  padding: 18px 52px;
+  background: #222222;
+  color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 999px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 4px;
-  /* Updated to 50px for the Pill shape */
-  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: "Montserrat", sans-serif;
   position: relative;
-  z-index: 1;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: silkenSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
 }
 
-/* Hover State - Inverted Look */
+/* Ripple on hover */
+.middleTxt button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.55s ease,
+    height 0.55s ease;
+}
+
+.middleTxt button:hover::before {
+  width: 500px;
+  height: 500px;
+}
+
 .middleTxt button:hover {
-  background: #1a1a1a;
-  color: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transform: translateY(-3px);
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #d6d6d6;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
 
 .middleTxt button:active {
-  transform: translateY(-1px);
+  transform: scale(0.97);
+}
+
+.middleTxt button:focus-visible {
+  outline: 2px solid #999;
+  outline-offset: 4px;
 }
 
 /* Section Spacing */
 .landpage > *:not(.Home) {
-  /* Using a slightly different Ivory or pure white for section contrast */
   background-color: #faf9f6;
   padding: 80px 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Keyframes ===== */
+@keyframes silkenSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes silkenSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
