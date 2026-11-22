@@ -1,3 +1,4 @@
+
 import "./Footer.css";
 
 export default function Footer() {
@@ -12,10 +13,11 @@ export default function Footer() {
         <div className="footer-section">
           <h3>Contact Us</h3>
           <p>
-            <i className="fa-solid fa-location-dot"></i> Bangalore, India
+            <i className="fa-solid fa-location-dot"></i>{" "}
+            Ahmedabad, Gujarat, India
           </p>
           <p>
-            <i className="fa-solid fa-phone"></i> +91 9876543210
+            <i className="fa-solid fa-phone"></i> +91 90000 12345
           </p>
           <p>
             <i className="fa-solid fa-envelope"></i>{" "}
